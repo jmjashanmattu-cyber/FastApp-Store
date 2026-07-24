@@ -2,7 +2,7 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>FastApp Store</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
@@ -11,7 +11,8 @@
 
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
-        body { background-color: #f8fafc; color: #0f172a; padding-bottom: 80px; }
+        html, body { width: 100%; height: 100%; }
+        body { background-color: #f8fafc; color: #0f172a; padding-bottom: 120px; overflow-x: hidden; }
         
         /* Header */
         .top-bar { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; background: #ffffff; position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
@@ -28,33 +29,33 @@
         /* Horizontal Scroll Cards */
         .horizontal-scroll { display: flex; gap: 16px; overflow-x: auto; padding: 8px 20px 16px 20px; scrollbar-width: none; }
         .horizontal-scroll::-webkit-scrollbar { display: none; }
-        .square-card { min-width: 115px; max-width: 115px; display: flex; flex-direction: column; cursor: pointer; }
-        .square-icon { width: 115px; height: 115px; border-radius: 24px; display: flex; align-items: center; justify-content: center; font-size: 50px; margin-bottom: 8px; border: 1px solid #f1f5f9; }
-        .square-title { font-size: 13px; font-weight: 700; color: #1e293b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 2px; }
-        .square-size { font-size: 12px; }
-        .square-rating { font-size: 11px; color: #64748b; font-weight: 600; margin-top: 1px; }
+        .square-card { min-width: 115px; max-width: 115px; display: flex; flex-direction: column; cursor: pointer; position: relative; z-index: 10; }
+        .square-icon { width: 115px; height: 115px; border-radius: 24px; display: flex; align-items: center; justify-content: center; font-size: 50px; margin-bottom: 8px; border: 1px solid #f1f5f9; pointer-events: none; }
+        .square-title { font-size: 13px; font-weight: 700; color: #1e293b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 2px; pointer-events: none; }
+        .square-size { font-size: 12px; pointer-events: none; }
+        .square-rating { font-size: 11px; color: #64748b; font-weight: 600; margin-top: 1px; pointer-events: none; }
 
         /* Vertical App List */
         .app-list-vertical { display: flex; flex-direction: column; gap: 16px; padding: 8px 20px; }
-        .list-item { display: flex; align-items: center; gap: 16px; cursor: pointer; background: #ffffff; padding: 14px; border-radius: 20px; border: 1px solid #f1f5f9; }
-        .list-icon { width: 62px; height: 62px; border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 32px; flex-shrink: 0; }
-        .list-details { flex: 1; }
+        .list-item { display: flex; align-items: center; gap: 16px; cursor: pointer; background: #ffffff; padding: 14px; border-radius: 20px; border: 1px solid #f1f5f9; position: relative; z-index: 10; }
+        .list-icon { width: 62px; height: 62px; border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 32px; flex-shrink: 0; pointer-events: none; }
+        .list-details { flex: 1; pointer-events: none; }
         .list-title { font-size: 15px; font-weight: 700; color: #0f172a; }
         .list-sub { font-size: 12px; color: #64748b; margin: 3px 0; }
         .list-meta { font-size: 12px; color: #64748b; font-weight: 600; }
 
-        .btn-install-small { background: #ecfdf5; color: #059669; border: 1px solid #a7f3d0; padding: 8px 16px; border-radius: 20px; font-weight: 700; font-size: 12px; }
+        .btn-install-small { background: #ecfdf5; color: #059669; border: 1px solid #a7f3d0; padding: 8px 16px; border-radius: 20px; font-weight: 700; font-size: 12px; pointer-events: none; }
 
         .bg-1 { background: #e0f2fe; }
         .bg-2 { background: #fce7f3; }
         .bg-3 { background: #dcfce7; }
         .bg-4 { background: #fef3c7; }
 
-        /* Bottom Nav */
-        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; height: 68px; background: #ffffff; border-top: 1px solid #e2e8f0; display: flex; justify-content: space-evenly; align-items: center; z-index: 1000; box-shadow: 0 -4px 12px rgba(0,0,0,0.04); }
-        .nav-item { display: flex; flex-direction: column; align-items: center; font-size: 11px; color: #64748b; gap: 4px; font-weight: 600; cursor: pointer; width: 25%; text-align: center; }
+        /* Bottom Nav - Fixed High Z-Index */
+        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; height: 70px; background: #ffffff; border-top: 1px solid #e2e8f0; display: flex; justify-content: space-evenly; align-items: center; z-index: 99999; box-shadow: 0 -4px 12px rgba(0,0,0,0.08); }
+        .nav-item { display: flex; flex-direction: column; align-items: center; font-size: 11px; color: #64748b; gap: 4px; font-weight: 600; cursor: pointer; width: 25%; text-align: center; height: 100%; justify-content: center; }
         .nav-item.active { color: #059669; font-weight: 800; }
-        .nav-icon { font-size: 22px; line-height: 1; }
+        .nav-icon { font-size: 22px; line-height: 1; pointer-events: none; }
 
         .page-section { display: none; }
         .page-section.active { display: block; }
@@ -72,13 +73,13 @@
         .user-email-text { font-size: 13px; color: #64748b; margin-top: 4px; font-weight: 500; }
         
         .menu-list { background: #ffffff; border-radius: 20px; border: 1px solid #f1f5f9; overflow: hidden; }
-        .menu-item { padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f1f5f9; font-size: 14px; font-weight: 600; color: #334155; cursor: pointer; }
+        .menu-item { padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f1f5f9; font-size: 14px; font-weight: 600; color: #334155; cursor: pointer; position: relative; z-index: 10; }
         .menu-item:last-child { border-bottom: none; }
         .menu-item-sub { font-size: 12px; color: #059669; font-weight: 700; margin-top: 2px; }
 
         /* Custom Name Input Modal */
-        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.6); z-index: 2000; display: none; align-items: center; justify-content: center; padding: 20px; }
-        .modal-card { background: #ffffff; width: 100%; max-width: 340px; border-radius: 24px; padding: 24px; text-align: center; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
+        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.7); z-index: 100000; display: none; align-items: center; justify-content: center; padding: 20px; }
+        .modal-card { background: #ffffff; width: 100%; max-width: 340px; border-radius: 24px; padding: 24px; text-align: center; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2); }
         .modal-title { font-size: 18px; font-weight: 800; color: #0f172a; margin-bottom: 14px; }
         .modal-input { width: 100%; padding: 12px 16px; border-radius: 12px; border: 1px solid #cbd5e1; font-size: 15px; outline: none; margin-bottom: 16px; }
         .modal-btns { display: flex; gap: 10px; }
@@ -86,7 +87,7 @@
         .btn-modal-cancel { flex: 1; padding: 12px; background: #f1f5f9; color: #475569; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; }
 
         /* Details Overlay */
-        .details-page { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #ffffff; z-index: 1500; display: none; overflow-y: auto; padding-bottom: 40px; }
+        .details-page { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #ffffff; z-index: 99999; display: none; overflow-y: auto; padding-bottom: 60px; }
         .details-header { display: flex; align-items: center; padding: 16px 20px; border-bottom: 1px solid #f1f5f9; }
         .back-btn { font-size: 24px; cursor: pointer; margin-right: 16px; border: none; background: none; }
         .details-hero { display: flex; gap: 20px; padding: 20px; align-items: center; }
@@ -327,15 +328,4 @@
             if(val && val.trim() !== '') {
                 var clean = val.trim();
                 localStorage.setItem('fa_user', clean);
-                localStorage.setItem('fa_custom_name', 'true');
-                loadProfileInfo();
-            }
-            closeNameModal();
-        }
-
-        function loadProfileInfo() {
-            var savedName = localStorage.getItem('fa_user') || 'FastApp Member';
-            var savedEmail = localStorage.getItem('fa_mail') || 'user@fastappstore.com';
-            var savedPic = localStorage.getItem('fa_pic');
-
-            var uNameEl = document.getEl
+              
