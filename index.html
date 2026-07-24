@@ -20,11 +20,14 @@
         .section-title { font-size: 18px; font-weight: 800; color: #0f172a; }
         .fastapp-green { color: #059669; font-weight: 700; }
 
-        .horizontal-scroll { display: flex; gap: 16px; overflow-x: auto; padding: 8px 20px 16px 20px; }
+        /* Suggested Scrollable Horizontal Cards */
+        .horizontal-scroll { display: flex; gap: 16px; overflow-x: auto; padding: 8px 20px 16px 20px; scrollbar-width: none; }
+        .horizontal-scroll::-webkit-scrollbar { display: none; }
         .square-card { min-width: 115px; max-width: 115px; display: flex; flex-direction: column; cursor: pointer; }
         .square-icon { width: 115px; height: 115px; border-radius: 24px; display: flex; align-items: center; justify-content: center; font-size: 50px; margin-bottom: 8px; border: 1px solid #f1f5f9; }
-        .square-title { font-size: 13px; font-weight: 700; color: #1e293b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .square-title { font-size: 13px; font-weight: 700; color: #1e293b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 2px; }
 
+        /* Vertical App List */
         .app-list-vertical { display: flex; flex-direction: column; gap: 16px; padding: 8px 20px; }
         .list-item { display: flex; align-items: center; gap: 16px; cursor: pointer; background: #ffffff; padding: 14px; border-radius: 20px; border: 1px solid #f1f5f9; }
         .list-icon { width: 62px; height: 62px; border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 32px; flex-shrink: 0; }
@@ -59,7 +62,7 @@
         .profile-avatar { width: 50px; height: 50px; background: #ecfdf5; color: #059669; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 800; }
         .menu-item { background: #fff; padding: 16px 20px; border-radius: 12px; margin-bottom: 10px; border: 1px solid #f1f5f9; font-size: 14px; font-weight: 600; }
 
-        /* App Details Overlay */
+        /* App Details Overlay Page */
         .details-page { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #ffffff; z-index: 200; display: none; overflow-y: auto; padding-bottom: 40px; }
         .details-header { display: flex; align-items: center; padding: 16px 20px; border-bottom: 1px solid #f1f5f9; }
         .back-btn { font-size: 24px; cursor: pointer; margin-right: 16px; border: none; background: none; }
@@ -84,17 +87,17 @@
             <div class="square-card" onclick="openApp('F-Droid Store', '📱', '10 MB', '4.8', 'bg-1', 'Free and open source Android app store replacement.', 'https://f-droid.org/F-Droid.apk')">
                 <div class="square-icon bg-1">📱</div>
                 <div class="square-title">F-Droid</div>
-                <div style="font-size: 11px;" class="fastapp-green">FastApp: 10 MB</div>
+                <div style="font-size: 12px;" class="fastapp-green">FastApp: 10 MB</div>
             </div>
             <div class="square-card" onclick="openApp('VLC Player', '🎬', '18 MB', '4.7', 'bg-2', 'Fast media player that plays all video and audio formats.', 'https://get.videolan.org/vlc-android/3.5.4/VLC-Android-3.5.4-arm64-v8a.apk')">
                 <div class="square-icon bg-2">🎬</div>
                 <div class="square-title">VLC Player</div>
-                <div style="font-size: 11px;" class="fastapp-green">FastApp: 18 MB</div>
+                <div style="font-size: 12px;" class="fastapp-green">FastApp: 18 MB</div>
             </div>
             <div class="square-card" onclick="openApp('NewPipe Lite', '📺', '11 MB', '4.9', 'bg-3', 'Lightweight video player with zero ads.', 'https://github.com/TeamNewPipe/NewPipe/releases/download/v0.27.2/NewPipe_v0.27.2.apk')">
                 <div class="square-icon bg-3">📺</div>
                 <div class="square-title">NewPipe Lite</div>
-                <div style="font-size: 11px;" class="fastapp-green">FastApp: 11 MB</div>
+                <div style="font-size: 12px;" class="fastapp-green">FastApp: 11 MB</div>
             </div>
         </div>
 
@@ -107,7 +110,7 @@
                     <div class="list-sub">Open source app repository</div>
                     <div class="list-meta">★ 4.8 • <span class="fastapp-green">FastApp: 10 MB</span></div>
                 </div>
-                <div class="btn-install-small">View</div>
+                <div class="btn-install-small">Install</div>
             </div>
             <div class="list-item" onclick="openApp('VLC Player', '🎬', '18 MB', '4.7', 'bg-2', 'Fast media player that plays all video formats.', 'https://get.videolan.org/vlc-android/3.5.4/VLC-Android-3.5.4-arm64-v8a.apk')">
                 <div class="list-icon bg-2">🎬</div>
@@ -116,7 +119,16 @@
                     <div class="list-sub">Fast video & audio player</div>
                     <div class="list-meta">★ 4.7 • <span class="fastapp-green">FastApp: 18 MB</span></div>
                 </div>
-                <div class="btn-install-small">View</div>
+                <div class="btn-install-small">Install</div>
+            </div>
+            <div class="list-item" onclick="openApp('NewPipe Lite', '📺', '11 MB', '4.9', 'bg-3', 'Lightweight video player with zero ads.', 'https://github.com/TeamNewPipe/NewPipe/releases/download/v0.27.2/NewPipe_v0.27.2.apk')">
+                <div class="list-icon bg-3">📺</div>
+                <div class="list-details">
+                    <div class="list-title app-name">NewPipe Lite</div>
+                    <div class="list-sub">Lightweight video streaming app</div>
+                    <div class="list-meta">★ 4.9 • <span class="fastapp-green">FastApp: 11 MB</span></div>
+                </div>
+                <div class="btn-install-small">Install</div>
             </div>
         </div>
     </div>
@@ -132,7 +144,7 @@
                     <div class="list-sub">3D Kart Racing</div>
                     <div class="list-meta">★ 4.6 • <span class="fastapp-green">FastApp: 15 MB</span></div>
                 </div>
-                <div class="btn-install-small">View</div>
+                <div class="btn-install-small">Install</div>
             </div>
             <div class="list-item" onclick="openApp('2048 Puzzle', '🔢', '3 MB', '4.9', 'bg-1', 'Addictive logic puzzle game.', 'https://f-droid.org/F-Droid.apk')">
                 <div class="list-icon bg-1">🔢</div>
@@ -141,7 +153,7 @@
                     <div class="list-sub">Math Logic Puzzle</div>
                     <div class="list-meta">★ 4.9 • <span class="fastapp-green">FastApp: 3 MB</span></div>
                 </div>
-                <div class="btn-install-small">View</div>
+                <div class="btn-install-small">Install</div>
             </div>
         </div>
     </div>
@@ -247,5 +259,5 @@
         }
     </script>
 </body>
-    </html>
-                    
+                    </html>
+                
