@@ -9,6 +9,7 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
         body { background-color: #f8fafc; color: #0f172a; padding-bottom: 80px; }
         
+        /* Top Navigation Header */
         .top-bar { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; background: #ffffff; position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
         .logo-section { display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 20px; color: #059669; }
         .logo-icon { width: 32px; height: 32px; background: #ecfdf5; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
@@ -20,12 +21,14 @@
         .section-title { font-size: 18px; font-weight: 800; color: #0f172a; }
         .fastapp-green { color: #059669; font-weight: 700; }
 
-        /* Suggested Scrollable Horizontal Cards */
+        /* Suggested Horizontal Cards */
         .horizontal-scroll { display: flex; gap: 16px; overflow-x: auto; padding: 8px 20px 16px 20px; scrollbar-width: none; }
         .horizontal-scroll::-webkit-scrollbar { display: none; }
         .square-card { min-width: 115px; max-width: 115px; display: flex; flex-direction: column; cursor: pointer; }
         .square-icon { width: 115px; height: 115px; border-radius: 24px; display: flex; align-items: center; justify-content: center; font-size: 50px; margin-bottom: 8px; border: 1px solid #f1f5f9; }
         .square-title { font-size: 13px; font-weight: 700; color: #1e293b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 2px; }
+        .square-size { font-size: 12px; }
+        .square-rating { font-size: 11px; color: #64748b; font-weight: 600; margin-top: 1px; }
 
         /* Vertical App List */
         .app-list-vertical { display: flex; flex-direction: column; gap: 16px; padding: 8px 20px; }
@@ -43,7 +46,7 @@
         .bg-3 { background: #dcfce7; }
         .bg-4 { background: #fef3c7; }
 
-        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; height: 65px; background: #ffffff; border-top: 1px solid #e2e8f0; display: flex; justify-content: space-around; align-items: center; z-index: 100; }
+        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; height: 65px; background: #ffffff; border-top: 1px solid #e2e8f0; display: flex; justify-around: space-around; align-items: center; z-index: 100; }
         .nav-item { display: flex; flex-direction: column; align-items: center; font-size: 11px; color: #64748b; gap: 4px; font-weight: 600; cursor: pointer; }
         .nav-item.active { color: #059669; font-weight: 800; }
         .nav-icon { font-size: 20px; }
@@ -82,22 +85,26 @@
         <div class="search-container">
             <input type="text" class="search-box" placeholder="Search apps..." onkeyup="filterApps(this.value, 'appsList')">
         </div>
+        
         <div class="section-header"><div class="section-title">Suggested Apps</div></div>
         <div class="horizontal-scroll">
             <div class="square-card" onclick="openApp('F-Droid Store', '📱', '10 MB', '4.8', 'bg-1', 'Free and open source Android app store replacement.', 'https://f-droid.org/F-Droid.apk')">
                 <div class="square-icon bg-1">📱</div>
                 <div class="square-title">F-Droid</div>
-                <div style="font-size: 12px;" class="fastapp-green">FastApp: 10 MB</div>
+                <div class="square-size fastapp-green">FastApp: 10 MB</div>
+                <div class="square-rating">★ 4.8</div>
             </div>
             <div class="square-card" onclick="openApp('VLC Player', '🎬', '18 MB', '4.7', 'bg-2', 'Fast media player that plays all video and audio formats.', 'https://get.videolan.org/vlc-android/3.5.4/VLC-Android-3.5.4-arm64-v8a.apk')">
                 <div class="square-icon bg-2">🎬</div>
                 <div class="square-title">VLC Player</div>
-                <div style="font-size: 12px;" class="fastapp-green">FastApp: 18 MB</div>
+                <div class="square-size fastapp-green">FastApp: 18 MB</div>
+                <div class="square-rating">★ 4.7</div>
             </div>
             <div class="square-card" onclick="openApp('NewPipe Lite', '📺', '11 MB', '4.9', 'bg-3', 'Lightweight video player with zero ads.', 'https://github.com/TeamNewPipe/NewPipe/releases/download/v0.27.2/NewPipe_v0.27.2.apk')">
                 <div class="square-icon bg-3">📺</div>
                 <div class="square-title">NewPipe Lite</div>
-                <div style="font-size: 12px;" class="fastapp-green">FastApp: 11 MB</div>
+                <div class="square-size fastapp-green">FastApp: 11 MB</div>
+                <div class="square-rating">★ 4.9</div>
             </div>
         </div>
 
@@ -136,6 +143,22 @@
     <!-- 2. GAMES TAB -->
     <div id="gamesPage" class="page-section">
         <div class="section-header"><div class="section-title">Trending Games</div></div>
+        <div class="horizontal-scroll">
+            <div class="square-card" onclick="openApp('SuperTuxKart', '🏎️', '15 MB', '4.6', 'bg-4', 'Fun 3D arcade racing game.', 'https://f-droid.org/F-Droid.apk')">
+                <div class="square-icon bg-4">🏎️</div>
+                <div class="square-title">SuperTuxKart</div>
+                <div class="square-size fastapp-green">FastApp: 15 MB</div>
+                <div class="square-rating">★ 4.6</div>
+            </div>
+            <div class="square-card" onclick="openApp('2048 Puzzle', '🔢', '3 MB', '4.9', 'bg-1', 'Addictive logic puzzle game.', 'https://f-droid.org/F-Droid.apk')">
+                <div class="square-icon bg-1">🔢</div>
+                <div class="square-title">2048 Puzzle</div>
+                <div class="square-size fastapp-green">FastApp: 3 MB</div>
+                <div class="square-rating">★ 4.9</div>
+            </div>
+        </div>
+
+        <div class="section-header"><div class="section-title">Top Lite Games</div></div>
         <div class="app-list-vertical" id="gamesList">
             <div class="list-item" onclick="openApp('SuperTuxKart', '🏎️', '15 MB', '4.6', 'bg-4', 'Fun 3D arcade racing game.', 'https://f-droid.org/F-Droid.apk')">
                 <div class="list-icon bg-4">🏎️</div>
@@ -259,5 +282,5 @@
         }
     </script>
 </body>
-                    </html>
-                
+    </html>
+    
