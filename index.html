@@ -67,13 +67,14 @@
         /* Account Section */
         .profile-container { padding: 20px; }
         .user-profile-header { background: #ffffff; padding: 24px; border-radius: 24px; border: 1px solid #f1f5f9; display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
-        .user-avatar-large { width: 72px; height: 72px; background: #ecfdf5; color: #059669; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 800; margin-bottom: 12px; border: 2px solid #a7f3d0; background-size: cover; background-position: center; }
-        .user-name-display { font-size: 18px; font-weight: 800; color: #0f172a; }
+        .user-avatar-large { width: 72px; height: 72px; background: #ecfdf5; color: #059669; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 800; margin-bottom: 12px; border: 2px solid #a7f3d0; background-size: cover; background-position: center; cursor: pointer; }
+        .user-name-display { font-size: 18px; font-weight: 800; color: #0f172a; cursor: pointer; }
         .user-email-text { font-size: 13px; color: #64748b; margin-top: 4px; font-weight: 500; }
         
         .menu-list { background: #ffffff; border-radius: 20px; border: 1px solid #f1f5f9; overflow: hidden; }
         .menu-item { padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f1f5f9; font-size: 14px; font-weight: 600; color: #334155; cursor: pointer; }
         .menu-item:last-child { border-bottom: none; }
+        .menu-item-sub { font-size: 12px; color: #059669; font-weight: 700; }
 
         /* Details Overlay */
         .details-page { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #ffffff; z-index: 200; display: none; overflow-y: auto; padding-bottom: 40px; }
@@ -192,12 +193,20 @@
     <div id="accountPage" class="page-section">
         <div class="profile-container">
             <div class="user-profile-header">
-                <div id="userAvatar" class="user-avatar-large">U</div>
-                <div id="userName" class="user-name-display">FastApp Member</div>
+                <div id="userAvatar" class="user-avatar-large" onclick="changeUserName()">U</div>
+                <div id="userName" class="user-name-display" onclick="changeUserName()">FastApp Member</div>
                 <div id="userEmail" class="user-email-text">user@fastappstore.com</div>
             </div>
 
             <div class="menu-list">
+                <!-- Option to Change Name -->
+                <div class="menu-item" onclick="changeUserName()">
+                    <div>
+                        <div>✏️ Account Name</div>
+                        <div id="menuCurrentName" class="menu-item-sub">Click to edit</div>
+                    </div>
+                    <span>➔</span>
+                </div>
                 <div class="menu-item" onclick="alert('Session synced with Google Account!')">
                     <span>📦 My Auto-Sync Downloads</span>
                     <span>➔</span>
@@ -253,7 +262,7 @@
     <script>
         var currentUrl = "";
 
-        // Helper to Parse JWT Token from Google One-Tap
+        // Parse JWT Token from Google One-Tap
         function parseJwt(token) {
             var base64Url = token.split('.')[1];
             var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
@@ -263,17 +272,33 @@
             return JSON.parse(jsonPayload);
         }
 
-        // Callback function executed automatically after 1-Tap Google click
+        // Auto Callback on Google 1-Tap
         function handleCredentialResponse(response) {
             var userData = parseJwt(response.credential);
             
-            localStorage.setItem('fa_user', userData.name);
+            // Only update name if user hasn't custom edited it yet
+            if(!localStorage.getItem('fa_custom_name')) {
+                localStorage.setItem('fa_user', userData.name);
+            }
             localStorage.setItem('fa_mail', userData.email);
             if(userData.picture) {
                 localStorage.setItem('fa_pic', userData.picture);
             }
 
             loadProfileInfo();
+        }
+
+        // Interactive function to edit name on click
+        function changeUserName() {
+            var current = localStorage.getItem('fa_user') || 'FastApp Member';
+            var newName = prompt("Naya Name likhein:", current);
+            
+            if (newName && newName.trim() !== "") {
+                var cleanName = newName.trim();
+                localStorage.setItem('fa_user', cleanName);
+                localStorage.setItem('fa_custom_name', 'true'); // Flag to preserve manual change
+                loadProfileInfo();
+            }
         }
 
         function loadProfileInfo() {
@@ -284,11 +309,17 @@
             document.getElementById('userName').innerText = savedName;
             document.getElementById('userEmail').innerText = savedEmail;
             
+            var menuSubText = document.getElementById('menuCurrentName');
+            if (menuSubText) {
+                menuSubText.innerText = savedName + ' (Click to edit)';
+            }
+            
             var avatarBox = document.getElementById('userAvatar');
             if(savedPic) {
                 avatarBox.style.backgroundImage = 'url(' + savedPic + ')';
                 avatarBox.innerText = '';
             } else {
+                avatarBox.style.backgroundImage = 'none';
                 avatarBox.innerText = savedName.charAt(0).toUpperCase();
             }
         }
@@ -324,24 +355,4 @@
             for (var i = 0; i < pages.length; i++) {
                 pages[i].style.display = 'none';
             }
-            document.getElementById(pageId).style.display = 'block';
-
-            var btns = document.querySelectorAll('.nav-item');
-            for (var j = 0; j < btns.length; j++) {
-                btns[j].classList.remove('active');
-            }
-            document.getElementById(btnId).classList.add('active');
-        }
-
-        function filterApps(text, listId) {
-            var val = text.toLowerCase();
-            var items = document.getElementById(listId).getElementsByClassName('list-item');
-            for (var i = 0; i < items.length; i++) {
-                var name = items[i].querySelector('.app-name').innerText.toLowerCase();
-                items[i].style.display = name.indexOf(val) > -1 ? 'flex' : 'none';
-            }
-        }
-    </script>
-</body>
-                                                       </html>
-                    
+            document.getElementB
