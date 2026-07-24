@@ -96,19 +96,19 @@
             <div class="section-title">Suggested Apps</div>
         </div>
         <div class="horizontal-scroll">
-            <div class="square-card" onclick="openDetails('F-Droid Store', '📱', '10 MB', '4.8', 'bg-1', 'Free and open source Android app store replacement.', 'https://f-droid.org/F-Droid.apk')">
+            <div class="square-card" onclick="showApp('fdroid')">
                 <div class="square-icon bg-1">📱</div>
                 <div class="square-title">F-Droid Store</div>
                 <div class="square-size fastapp-green">FastApp: 10 MB</div>
                 <div class="square-rating">★ 4.8</div>
             </div>
-            <div class="square-card" onclick="openDetails('VLC Player Lite', '🎬', '18 MB', '4.7', 'bg-2', 'Fast media player that plays all video and audio formats effortlessly.', 'https://get.videolan.org/vlc-android/3.5.4/VLC-Android-3.5.4-arm64-v8a.apk')">
+            <div class="square-card" onclick="showApp('vlc')">
                 <div class="square-icon bg-2">🎬</div>
                 <div class="square-title">VLC Player</div>
                 <div class="square-size fastapp-green">FastApp: 18 MB</div>
                 <div class="square-rating">★ 4.7</div>
             </div>
-            <div class="square-card" onclick="openDetails('NewPipe Lite', '📺', '11 MB', '4.9', 'bg-3', 'Lightweight media client built for speed and low data consumption.', 'https://github.com/TeamNewPipe/NewPipe/releases/download/v0.27.2/NewPipe_v0.27.2.apk')">
+            <div class="square-card" onclick="showApp('newpipe')">
                 <div class="square-icon bg-3">📺</div>
                 <div class="square-title">NewPipe Lite</div>
                 <div class="square-size fastapp-green">FastApp: 11 MB</div>
@@ -120,32 +120,32 @@
             <div class="section-title">Recommended Apps</div>
         </div>
         <div class="app-list-vertical" id="appsList">
-            <div class="list-item" onclick="openDetails('F-Droid Store', '📱', '10 MB', '4.8', 'bg-1', 'Free and open source Android app store replacement.', 'https://f-droid.org/F-Droid.apk')">
+            <div class="list-item" onclick="showApp('fdroid')">
                 <div class="list-icon bg-1">📱</div>
                 <div class="list-details">
                     <div class="list-title app-name">F-Droid Store</div>
                     <div class="list-sub">Open source app repository</div>
                     <div class="list-meta">★ 4.8 • <span class="fastapp-green">FastApp: 10 MB</span></div>
                 </div>
-                <button class="btn-install-small">Install</button>
+                <div class="btn-install-small">View</div>
             </div>
-            <div class="list-item" onclick="openDetails('VLC Player Lite', '🎬', '18 MB', '4.7', 'bg-2', 'Fast media player that plays all video and audio formats effortlessly.', 'https://get.videolan.org/vlc-android/3.5.4/VLC-Android-3.5.4-arm64-v8a.apk')">
+            <div class="list-item" onclick="showApp('vlc')">
                 <div class="list-icon bg-2">🎬</div>
                 <div class="list-details">
                     <div class="list-title app-name">VLC Player Lite</div>
                     <div class="list-sub">Fast video & audio player</div>
                     <div class="list-meta">★ 4.7 • <span class="fastapp-green">FastApp: 18 MB</span></div>
                 </div>
-                <button class="btn-install-small">Install</button>
+                <div class="btn-install-small">View</div>
             </div>
-            <div class="list-item" onclick="openDetails('NewPipe Lite', '📺', '11 MB', '4.9', 'bg-3', 'Lightweight media client built for speed and low data consumption.', 'https://github.com/TeamNewPipe/NewPipe/releases/download/v0.27.2/NewPipe_v0.27.2.apk')">
+            <div class="list-item" onclick="showApp('newpipe')">
                 <div class="list-icon bg-3">📺</div>
                 <div class="list-details">
                     <div class="list-title app-name">NewPipe Lite</div>
                     <div class="list-sub">Lightweight video streaming app</div>
                     <div class="list-meta">★ 4.9 • <span class="fastapp-green">FastApp: 11 MB</span></div>
                 </div>
-                <button class="btn-install-small">Install</button>
+                <div class="btn-install-small">View</div>
             </div>
         </div>
     </div>
@@ -160,13 +160,13 @@
             <div class="section-title">Trending Games</div>
         </div>
         <div class="horizontal-scroll">
-            <div class="square-card" onclick="openDetails('SuperTuxKart Lite', '🏎️', '15 MB', '4.6', 'bg-4', 'Fun and fast 3D arcade racing game with cute characters.', 'https://f-droid.org/F-Droid.apk')">
+            <div class="square-card" onclick="showApp('kart')">
                 <div class="square-icon bg-4">🏎️</div>
                 <div class="square-title">SuperTuxKart</div>
                 <div class="square-size fastapp-green">FastApp: 15 MB</div>
                 <div class="square-rating">★ 4.6</div>
             </div>
-            <div class="square-card" onclick="openDetails('2048 Puzzle Lite', '🔢', '3 MB', '4.9', 'bg-1', 'Addictive math logic puzzle game that runs super fast on any phone.', 'https://f-droid.org/F-Droid.apk')">
+            <div class="square-card" onclick="showApp('puzzle')">
                 <div class="square-icon bg-1">🔢</div>
                 <div class="square-title">2048 Puzzle</div>
                 <div class="square-size fastapp-green">FastApp: 3 MB</div>
@@ -178,23 +178,23 @@
             <div class="section-title">Top Lite Games</div>
         </div>
         <div class="app-list-vertical" id="gamesList">
-            <div class="list-item" onclick="openDetails('SuperTuxKart Lite', '🏎️', '15 MB', '4.6', 'bg-4', 'Fun and fast 3D arcade racing game with cute characters.', 'https://f-droid.org/F-Droid.apk')">
+            <div class="list-item" onclick="showApp('kart')">
                 <div class="list-icon bg-4">🏎️</div>
                 <div class="list-details">
                     <div class="list-title app-name">SuperTuxKart Lite</div>
                     <div class="list-sub">3D Arcade Kart Racing</div>
                     <div class="list-meta">★ 4.6 • <span class="fastapp-green">FastApp: 15 MB</span></div>
                 </div>
-                <button class="btn-install-small">Install</button>
+                <div class="btn-install-small">View</div>
             </div>
-            <div class="list-item" onclick="openDetails('2048 Puzzle Lite', '🔢', '3 MB', '4.9', 'bg-1', 'Addictive math logic puzzle game that runs super fast on any phone.', 'https://f-droid.org/F-Droid.apk')">
+            <div class="list-item" onclick="showApp('puzzle')">
                 <div class="list-icon bg-1">🔢</div>
                 <div class="list-details">
                     <div class="list-title app-name">2048 Puzzle Lite</div>
                     <div class="list-sub">Mind & Logic Puzzle</div>
                     <div class="list-meta">★ 4.9 • <span class="fastapp-green">FastApp: 3 MB</span></div>
                 </div>
-                <button class="btn-install-small">Install</button>
+                <div class="btn-install-small">View</div>
             </div>
         </div>
     </div>
@@ -209,50 +209,32 @@
             <div class="section-title">All Apps & Games</div>
         </div>
         <div class="app-list-vertical" id="allList">
-            <div class="list-item" onclick="openDetails('F-Droid Store', '📱', '10 MB', '4.8', 'bg-1', 'Free and open source Android app store replacement.', 'https://f-droid.org/F-Droid.apk')">
+            <div class="list-item" onclick="showApp('fdroid')">
                 <div class="list-icon bg-1">📱</div>
                 <div class="list-details">
                     <div class="list-title app-name">F-Droid Store</div>
                     <div class="list-sub">Open source app repository</div>
                     <div class="list-meta">★ 4.8 • <span class="fastapp-green">FastApp: 10 MB</span></div>
                 </div>
-                <button class="btn-install-small">Install</button>
+                <div class="btn-install-small">View</div>
             </div>
-            <div class="list-item" onclick="openDetails('VLC Player Lite', '🎬', '18 MB', '4.7', 'bg-2', 'Fast media player that plays all video and audio formats effortlessly.', 'https://get.videolan.org/vlc-android/3.5.4/VLC-Android-3.5.4-arm64-v8a.apk')">
+            <div class="list-item" onclick="showApp('vlc')">
                 <div class="list-icon bg-2">🎬</div>
                 <div class="list-details">
                     <div class="list-title app-name">VLC Player Lite</div>
                     <div class="list-sub">Fast video & audio player</div>
                     <div class="list-meta">★ 4.7 • <span class="fastapp-green">FastApp: 18 MB</span></div>
                 </div>
-                <button class="btn-install-small">Install</button>
+                <div class="btn-install-small">View</div>
             </div>
-            <div class="list-item" onclick="openDetails('NewPipe Lite', '📺', '11 MB', '4.9', 'bg-3', 'Lightweight media client built for speed and low data consumption.', 'https://github.com/TeamNewPipe/NewPipe/releases/download/v0.27.2/NewPipe_v0.27.2.apk')">
+            <div class="list-item" onclick="showApp('newpipe')">
                 <div class="list-icon bg-3">📺</div>
                 <div class="list-details">
                     <div class="list-title app-name">NewPipe Lite</div>
                     <div class="list-sub">Lightweight video streaming app</div>
                     <div class="list-meta">★ 4.9 • <span class="fastapp-green">FastApp: 11 MB</span></div>
                 </div>
-                <button class="btn-install-small">Install</button>
-            </div>
-            <div class="list-item" onclick="openDetails('SuperTuxKart Lite', '🏎️', '15 MB', '4.6', 'bg-4', 'Fun and fast 3D arcade racing game with cute characters.', 'https://f-droid.org/F-Droid.apk')">
-                <div class="list-icon bg-4">🏎️</div>
-                <div class="list-details">
-                    <div class="list-title app-name">SuperTuxKart Lite</div>
-                    <div class="list-sub">3D Arcade Kart Racing</div>
-                    <div class="list-meta">★ 4.6 • <span class="fastapp-green">FastApp: 15 MB</span></div>
-                </div>
-                <button class="btn-install-small">Install</button>
-            </div>
-            <div class="list-item" onclick="openDetails('2048 Puzzle Lite', '🔢', '3 MB', '4.9', 'bg-1', 'Addictive math logic puzzle game that runs super fast on any phone.', 'https://f-droid.org/F-Droid.apk')">
-                <div class="list-icon bg-1">🔢</div>
-                <div class="list-details">
-                    <div class="list-title app-name">2048 Puzzle Lite</div>
-                    <div class="list-sub">Mind & Logic Puzzle</div>
-                    <div class="list-meta">★ 4.9 • <span class="fastapp-green">FastApp: 3 MB</span></div>
-                </div>
-                <button class="btn-install-small">Install</button>
+                <div class="btn-install-small">View</div>
             </div>
         </div>
     </div>
@@ -319,6 +301,70 @@
     </div>
 
     <script>
-        let currentDownloadUrl = "";
+        const appsData = {
+            'fdroid': { name: 'F-Droid Store', icon: '📱', size: '10 MB', rating: '4.8', bg: 'bg-1', desc: 'Free and open source Android app store replacement.', url: 'https://f-droid.org/F-Droid.apk' },
+            'vlc': { name: 'VLC Player Lite', icon: '🎬', size: '18 MB', rating: '4.7', bg: 'bg-2', desc: 'Fast media player that plays all video and audio formats effortlessly.', url: 'https://get.videolan.org/vlc-android/3.5.4/VLC-Android-3.5.4-arm64-v8a.apk' },
+            'newpipe': { name: 'NewPipe Lite', icon: '📺', size: '11 MB', rating: '4.9', bg: 'bg-3', desc: 'Lightweight media client built for speed and low data consumption.', url: 'https://github.com/TeamNewPipe/NewPipe/releases/download/v0.27.2/NewPipe_v0.27.2.apk' },
+            'kart': { name: 'SuperTuxKart Lite', icon: '🏎️', size: '15 MB', rating: '4.6', bg: 'bg-4', desc: 'Fun and fast 3D arcade racing game with cute characters.', url: 'https://f-droid.org/F-Droid.apk' },
+            'puzzle': { name: '2048 Puzzle Lite', icon: '🔢', size: '3 MB', rating: '4.9', bg: 'bg-1', desc: 'Addictive math logic puzzle game that runs super fast on any phone.', url: 'https://f-droid.org/F-Droid.apk' }
+        };
 
-        function openDetails(name, icon, size, rating, bgClass,
+        let activeAppUrl = "";
+
+        function showApp(key) {
+            let app = appsData[key];
+            if (!app) return;
+            activeAppUrl = app.url;
+            document.getElementById('dTitle').innerText = app.name;
+            document.getElementById('dIcon').innerText = app.icon;
+            document.getElementById('dIcon').className = 'details-icon ' + app.bg;
+            document.getElementById('dSize').innerText = "FastApp: " + app.size;
+            document.getElementById('dRating').innerText = app.rating + " ★";
+            document.getElementById('dDesc').innerText = app.desc;
+            document.getElementById('detailsPage').style.display = 'block';
+        }
+
+        function closeDetails() {
+            document.getElementById('detailsPage').style.display = 'none';
+        }
+
+        function triggerDownload() {
+            if (activeAppUrl) {
+                window.location.href = activeAppUrl;
+            } else {
+                alert("Download link active nahi hai!");
+            }
+        }
+
+        function switchTab(pageId, tabId) {
+            let pages = document.getElementsByClassName('page-section');
+            for (let i = 0; i < pages.length; i++) {
+                pages[i].classList.remove('active');
+            }
+            document.getElementById(pageId).classList.add('active');
+
+            let tabs = document.getElementsByClassName('nav-item');
+            for (let i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove('active');
+            }
+            document.getElementById(tabId).classList.add('active');
+            
+            if (pageId === 'searchPage') {
+                document.getElementById('globalSearchInput').focus();
+            }
+        }
+
+        function filterApps(query, containerId) {
+            let input = query.toLowerCase();
+            let container = document.getElementById(containerId);
+            let items = container.getElementsByClassName('list-item');
+            
+            for (let i = 0; i < items.length; i++) {
+                let name = items[i].querySelector('.app-name').innerText.toLowerCase();
+                items[i].style.display = name.includes(input) ? "flex" : "none";
+            }
+        }
+    </script>
+</body>
+                </html>
+                
