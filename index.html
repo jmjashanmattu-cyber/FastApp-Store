@@ -59,11 +59,11 @@
         .short-card { background: #0f172a; color: #ffffff; border-radius: 24px; padding: 20px; }
         .short-btn { background: #059669; color: #ffffff; border: none; padding: 10px 20px; border-radius: 12px; font-weight: 700; margin-top: 10px; cursor: pointer; }
 
-        /* Enhanced User Profile Setup Page */
+        /* Auto Profile Setup Page */
         .profile-container { padding: 20px; }
         .user-profile-header { background: #ffffff; padding: 24px; border-radius: 24px; border: 1px solid #f1f5f9; display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
         .user-avatar-large { width: 72px; height: 72px; background: #ecfdf5; color: #059669; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 800; margin-bottom: 12px; border: 2px solid #a7f3d0; }
-        .user-name-input { font-size: 18px; font-weight: 800; color: #0f172a; border: none; background: transparent; text-align: center; outline: none; border-bottom: 1px dashed #cbd5e1; padding-bottom: 2px; width: 80%; }
+        .user-name-display { font-size: 18px; font-weight: 800; color: #0f172a; }
         .user-email-text { font-size: 13px; color: #64748b; margin-top: 4px; font-weight: 500; }
         
         .profile-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
@@ -203,41 +203,37 @@
         </div>
     </div>
 
-    <!-- 4. ACCOUNT / USER PROFILE TAB -->
+    <!-- 4. AUTO ACCOUNT PROFILE TAB -->
     <div id="accountPage" class="page-section">
         <div class="profile-container">
             <div class="user-profile-header">
-                <div class="user-avatar-large">JM</div>
-                <input type="text" class="user-name-input" value="Jashan Mattu" />
-                <div class="user-email-text">jashan@fastappstore.com</div>
+                <div id="userAvatar" class="user-avatar-large">U</div>
+                <div id="userName" class="user-name-display">FastApp VIP User</div>
+                <div id="userEmail" class="user-email-text">user@fastappstore.com</div>
             </div>
 
             <div class="profile-stats-grid">
                 <div class="p-stat-box">
-                    <h4>3</h4>
-                    <p>Apps Installed</p>
+                    <h4>Active</h4>
+                    <p>Device Status</p>
                 </div>
                 <div class="p-stat-box">
-                    <h4>50%</h4>
-                    <p>Data Saved</p>
+                    <h4>Fast</h4>
+                    <p>Network Speed</p>
                 </div>
             </div>
 
             <div class="menu-list">
-                <div class="menu-item" onclick="alert('Manage your downloaded APK packages here.')">
+                <div class="menu-item" onclick="alert('All downloaded apps are synced with your device session.')">
                     <span>📦 My Downloads</span>
                     <span>➔</span>
                 </div>
-                <div class="menu-item" onclick="alert('FastApp Store is up to date (v1.0)')">
-                    <span>🔄 Check for Updates</span>
+                <div class="menu-item" onclick="alert('FastApp Store is running on latest automated secure build.')">
+                    <span>🔄 System Sync Status</span>
                     <span>➔</span>
                 </div>
-                <div class="menu-item" onclick="alert('High speed proxy compression enabled.')">
-                    <span>⚡ Data Saver Settings</span>
-                    <span>➔</span>
-                </div>
-                <div class="menu-item" onclick="alert('Logged out successfully.')" style="color: #ef4444;">
-                    <span>🚪 Logout Account</span>
+                <div class="menu-item" onclick="alert('Data Saver & Proxy Compression is Active.')">
+                    <span>⚡ Data Saver Mode</span>
                     <span>➔</span>
                 </div>
             </div>
@@ -287,6 +283,26 @@
     <script>
         var currentUrl = "";
 
+        // Automatic Hidden Identity Generator on Store Load
+        window.onload = function() {
+            let randomId = Math.floor(1000 + Math.random() * 9000);
+            let autoEmail = "fastapp_user_" + randomId + "@gmail.com";
+            let autoName = "FastApp Member #" + randomId;
+            
+            // Check if already assigned in localStorage, else assign automatically
+            if (!localStorage.getItem('fa_email')) {
+                localStorage.setItem('fa_email', autoEmail);
+                localStorage.setItem('fa_name', autoName);
+            }
+
+            let savedName = localStorage.getItem('fa_name');
+            let savedEmail = localStorage.getItem('fa_email');
+
+            document.getElementById('userName').innerText = savedName;
+            document.getElementById('userEmail').innerText = savedEmail;
+            document.getElementById('userAvatar').innerText = savedName.charAt(savedName.length - 1).toUpperCase();
+        };
+
         function openApp(name, icon, size, rating, bg, desc, url) {
             currentUrl = url;
             document.getElementById('appBoxName').innerText = name;
@@ -320,18 +336,4 @@
             for (var j = 0; j < btns.length; j++) {
                 btns[j].classList.remove('active');
             }
-            document.getElementById(btnId).classList.add('active');
-        }
-
-        function filterApps(text, listId) {
-            var val = text.toLowerCase();
-            var items = document.getElementById(listId).getElementsByClassName('list-item');
-            for (var i = 0; i < items.length; i++) {
-                var name = items[i].querySelector('.app-name').innerText.toLowerCase();
-                items[i].style.display = name.indexOf(val) > -1 ? 'flex' : 'none';
-            }
-        }
-    </script>
-</body>
-                    </html>
-                    
+            document.getElem
