@@ -13,7 +13,6 @@
         .top-bar { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; background: #ffffff; position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
         .logo-section { display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 20px; color: #059669; letter-spacing: -0.5px; }
         .logo-icon { width: 32px; height: 32px; background: #ecfdf5; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
-        .data-saver { background: #ecfdf5; color: #059669; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; border: 1px solid #a7f3d0; }
         
         /* Categories Tabs */
         .nav-tabs { display: flex; background: #ffffff; padding: 0 12px; overflow-x: auto; scrollbar-width: none; border-bottom: 1px solid #e2e8f0; }
@@ -27,16 +26,10 @@
         .search-box:focus { border-color: #10b981; box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1); }
         
         /* Section Title */
-        .section-header { display: flex; justify-content: space-between; align-items: center; padding: 20px 20px 10px 20px; }
+        .section-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px 8px 20px; }
         .section-title { font-size: 18px; font-weight: 800; color: #0f172a; letter-spacing: -0.3px; }
         
         .fastapp-green { color: #059669; font-weight: 700; }
-
-        /* Featured Highlight Card */
-        .featured-banner { margin: 10px 20px; padding: 20px; background: linear-gradient(135deg, #059669 0%, #10b981 100%); border-radius: 20px; color: #ffffff; box-shadow: 0 10px 20px -5px rgba(5, 150, 105, 0.3); }
-        .featured-banner h3 { font-size: 20px; font-weight: 800; margin-bottom: 6px; }
-        .featured-banner p { font-size: 13px; opacity: 0.9; margin-bottom: 14px; font-weight: 500; }
-        .btn-banner { background: #ffffff; color: #059669; border: none; padding: 10px 20px; border-radius: 12px; font-weight: 700; font-size: 13px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
 
         /* Horizontal Card Scroll */
         .horizontal-scroll { display: flex; gap: 16px; overflow-x: auto; padding: 8px 20px 16px 20px; scrollbar-width: none; }
@@ -81,7 +74,6 @@
             <div class="logo-icon">⚡</div>
             <span>FastApp Store</span>
         </div>
-        <div class="data-saver">Data Saver On</div>
     </div>
 
     <!-- Category Tabs -->
@@ -95,13 +87,6 @@
     <!-- Search Input -->
     <div class="search-container">
         <input type="text" class="search-box" id="searchInput" placeholder="Search apps, games & tools..." onkeyup="filterApps()">
-    </div>
-
-    <!-- Highlight Hero Banner -->
-    <div class="featured-banner">
-        <h3>50% Data Saving Engine</h3>
-        <p>Install your favorite apps with compressed ultra-fast APKs.</p>
-        <button class="btn-banner" onclick="alert('Fast Engine Enabled!')">Explore Boosted Apps</button>
     </div>
 
     <!-- Suggested Apps (Horizontal Slider) -->
@@ -209,5 +194,5 @@
         }
     </script>
 </body>
-                                                                       </html>
+            </html>
                 
