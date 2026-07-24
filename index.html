@@ -53,6 +53,23 @@
         .page-section { display: none; }
         .page-section.active { display: block; }
 
+        /* Shorts Container Styling */
+        .shorts-container { padding: 10px 20px; display: flex; flex-direction: column; gap: 20px; }
+        .short-card { background: #0f172a; color: #ffffff; border-radius: 24px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.15); position: relative; }
+        .short-video-placeholder { height: 380px; background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%), #1e293b; display: flex; flex-direction: column; justify-content: space-between; padding: 20px; }
+        .short-badge { background: #059669; color: #fff; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; width: fit-content; }
+        .short-info h3 { font-size: 18px; font-weight: 800; margin-bottom: 6px; }
+        .short-info p { font-size: 13px; color: #cbd5e1; margin-bottom: 12px; }
+        .short-btn { background: #059669; color: #ffffff; border: none; padding: 10px 20px; border-radius: 12px; font-weight: 700; cursor: pointer; }
+
+        /* Account Profile Page Styling */
+        .profile-container { padding: 20px; }
+        .profile-card { background: #ffffff; padding: 20px; border-radius: 20px; border: 1px solid #f1f5f9; display: flex; align-items: center; gap: 16px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+        .profile-avatar { width: 60px; height: 60px; background: #ecfdf5; color: #059669; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 800; }
+        .menu-list { background: #ffffff; border-radius: 20px; border: 1px solid #f1f5f9; overflow: hidden; }
+        .menu-item { padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f1f5f9; font-size: 14px; font-weight: 600; color: #334155; cursor: pointer; }
+        .menu-item:last-child { border-bottom: none; }
+
         /* Detail Overlay View */
         .details-page { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #ffffff; z-index: 200; display: none; overflow-y: auto; padding-bottom: 40px; }
         .details-header { display: flex; align-items: center; padding: 16px 20px; border-bottom: 1px solid #f1f5f9; }
@@ -89,7 +106,7 @@
     <!-- 1. APPS TAB -->
     <div id="appsPage" class="page-section active">
         <div class="search-container">
-            <input type="text" class="search-box" placeholder="Search apps..." onkeyup="filterApps(this.value, 'appsList')">
+            <input type="text" class="search-box" placeholder="Search apps & games..." onkeyup="filterApps(this.value, 'appsList')">
         </div>
 
         <div class="section-header">
@@ -199,42 +216,64 @@
         </div>
     </div>
 
-    <!-- 3. SEARCH TAB -->
-    <div id="searchPage" class="page-section">
-        <div class="search-container">
-            <input type="text" class="search-box" id="globalSearchInput" placeholder="Type name to search all apps & games..." onkeyup="filterApps(this.value, 'allList')">
-        </div>
-
+    <!-- 3. SHORTS (APP DEMO VIDEOS) TAB -->
+    <div id="shortsPage" class="page-section">
         <div class="section-header">
-            <div class="section-title">All Apps & Games</div>
+            <div class="section-title">App Highlights & Benefits</div>
         </div>
-        <div class="app-list-vertical" id="allList">
-            <div class="list-item" onclick="showApp('fdroid')">
-                <div class="list-icon bg-1">📱</div>
-                <div class="list-details">
-                    <div class="list-title app-name">F-Droid Store</div>
-                    <div class="list-sub">Open source app repository</div>
-                    <div class="list-meta">★ 4.8 • <span class="fastapp-green">FastApp: 10 MB</span></div>
+        <div class="shorts-container">
+            <div class="short-card">
+                <div class="short-video-placeholder">
+                    <div class="short-badge">⚡ Ultra Fast</div>
+                    <div class="short-info">
+                        <h3>NewPipe Lite Benefits</h3>
+                        <p>Background Play, Zero Ads, aur 70% Kam Internet Data use karein!</p>
+                        <button class="short-btn" onclick="showApp('newpipe')">Install Now (11 MB)</button>
+                    </div>
                 </div>
-                <div class="btn-install-small">View</div>
             </div>
-            <div class="list-item" onclick="showApp('vlc')">
-                <div class="list-icon bg-2">🎬</div>
-                <div class="list-details">
-                    <div class="list-title app-name">VLC Player Lite</div>
-                    <div class="list-sub">Fast video & audio player</div>
-                    <div class="list-meta">★ 4.7 • <span class="fastapp-green">FastApp: 18 MB</span></div>
+
+            <div class="short-card">
+                <div class="short-video-placeholder">
+                    <div class="short-badge">🎬 All-in-One Player</div>
+                    <div class="short-info">
+                        <h3>Why Choose VLC Player?</h3>
+                        <p>Har tarah ki video aur audio bilkul smooth chalao bina lag ke!</p>
+                        <button class="short-btn" onclick="showApp('vlc')">Install Now (18 MB)</button>
+                    </div>
                 </div>
-                <div class="btn-install-small">View</div>
             </div>
-            <div class="list-item" onclick="showApp('newpipe')">
-                <div class="list-icon bg-3">📺</div>
-                <div class="list-details">
-                    <div class="list-title app-name">NewPipe Lite</div>
-                    <div class="list-sub">Lightweight video streaming app</div>
-                    <div class="list-meta">★ 4.9 • <span class="fastapp-green">FastApp: 11 MB</span></div>
+        </div>
+    </div>
+
+    <!-- 4. ACCOUNT / USER PROFILE TAB -->
+    <div id="accountPage" class="page-section">
+        <div class="profile-container">
+            <div class="profile-card">
+                <div class="profile-avatar">JM</div>
+                <div>
+                    <h3 style="font-size: 16px; font-weight: 800;">FastApp User</h3>
+                    <p style="font-size: 12px; color: #64748b;">user@fastappstore.com</p>
                 </div>
-                <div class="btn-install-small">View</div>
+            </div>
+
+            <div class="menu-list">
+                <div class="menu-item" onclick="alert('Aapne 3 Apps install ki hain.')">
+                    <span>📦 My Installed Apps</span>
+                    <span>➔</span>
+                </div>
+                <div class="menu-item" onclick="alert('App Update Check: All apps are up to date!')">
+                    <span>🔄 Check App Updates</span>
+                    <span>➔</span>
+                </div>
+                <div class="menu-item" onclick="alert('Data Saver is Active - 50% data saved!')">
+                    <span>⚡ Data Saver Settings</span>
+                    <span>➔</span>
+                </div>
+                <div class="menu-item" onclick="alert('FastApp Store v1.0 Live')">
+                    <span>ℹ️ About FastApp Store</span>
+                    <span>➔</span>
+                </div>
             </div>
         </div>
     </div>
@@ -249,9 +288,13 @@
             <span class="nav-icon">🎮</span>
             <span>Games</span>
         </div>
-        <div class="nav-item" id="tabSearch" onclick="switchTab('searchPage', 'tabSearch')">
-            <span class="nav-icon">🔍</span>
-            <span>Search</span>
+        <div class="nav-item" id="tabShorts" onclick="switchTab('shortsPage', 'tabShorts')">
+            <span class="nav-icon">🎬</span>
+            <span>Shorts</span>
+        </div>
+        <div class="nav-item" id="tabAccount" onclick="switchTab('accountPage', 'tabAccount')">
+            <span class="nav-icon">👤</span>
+            <span>Account</span>
         </div>
     </div>
 
@@ -305,66 +348,4 @@
             'fdroid': { name: 'F-Droid Store', icon: '📱', size: '10 MB', rating: '4.8', bg: 'bg-1', desc: 'Free and open source Android app store replacement.', url: 'https://f-droid.org/F-Droid.apk' },
             'vlc': { name: 'VLC Player Lite', icon: '🎬', size: '18 MB', rating: '4.7', bg: 'bg-2', desc: 'Fast media player that plays all video and audio formats effortlessly.', url: 'https://get.videolan.org/vlc-android/3.5.4/VLC-Android-3.5.4-arm64-v8a.apk' },
             'newpipe': { name: 'NewPipe Lite', icon: '📺', size: '11 MB', rating: '4.9', bg: 'bg-3', desc: 'Lightweight media client built for speed and low data consumption.', url: 'https://github.com/TeamNewPipe/NewPipe/releases/download/v0.27.2/NewPipe_v0.27.2.apk' },
-            'kart': { name: 'SuperTuxKart Lite', icon: '🏎️', size: '15 MB', rating: '4.6', bg: 'bg-4', desc: 'Fun and fast 3D arcade racing game with cute characters.', url: 'https://f-droid.org/F-Droid.apk' },
-            'puzzle': { name: '2048 Puzzle Lite', icon: '🔢', size: '3 MB', rating: '4.9', bg: 'bg-1', desc: 'Addictive math logic puzzle game that runs super fast on any phone.', url: 'https://f-droid.org/F-Droid.apk' }
-        };
-
-        let activeAppUrl = "";
-
-        function showApp(key) {
-            let app = appsData[key];
-            if (!app) return;
-            activeAppUrl = app.url;
-            document.getElementById('dTitle').innerText = app.name;
-            document.getElementById('dIcon').innerText = app.icon;
-            document.getElementById('dIcon').className = 'details-icon ' + app.bg;
-            document.getElementById('dSize').innerText = "FastApp: " + app.size;
-            document.getElementById('dRating').innerText = app.rating + " ★";
-            document.getElementById('dDesc').innerText = app.desc;
-            document.getElementById('detailsPage').style.display = 'block';
-        }
-
-        function closeDetails() {
-            document.getElementById('detailsPage').style.display = 'none';
-        }
-
-        function triggerDownload() {
-            if (activeAppUrl) {
-                window.location.href = activeAppUrl;
-            } else {
-                alert("Download link active nahi hai!");
-            }
-        }
-
-        function switchTab(pageId, tabId) {
-            let pages = document.getElementsByClassName('page-section');
-            for (let i = 0; i < pages.length; i++) {
-                pages[i].classList.remove('active');
-            }
-            document.getElementById(pageId).classList.add('active');
-
-            let tabs = document.getElementsByClassName('nav-item');
-            for (let i = 0; i < tabs.length; i++) {
-                tabs[i].classList.remove('active');
-            }
-            document.getElementById(tabId).classList.add('active');
-            
-            if (pageId === 'searchPage') {
-                document.getElementById('globalSearchInput').focus();
-            }
-        }
-
-        function filterApps(query, containerId) {
-            let input = query.toLowerCase();
-            let container = document.getElementById(containerId);
-            let items = container.getElementsByClassName('list-item');
-            
-            for (let i = 0; i < items.length; i++) {
-                let name = items[i].querySelector('.app-name').innerText.toLowerCase();
-                items[i].style.display = name.includes(input) ? "flex" : "none";
-            }
-        }
-    </script>
-</body>
-                </html>
-                
+            'kart': { name: 'SuperTuxKart Lite', icon: '🏎️', size: '15 MB', rating: '4.6', bg: 'bg-4', desc: 'Fun and fast 3D arcade racing game wi
