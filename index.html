@@ -45,7 +45,7 @@
         .bg-3 { background: #dcfce7; }
         .bg-4 { background: #fef3c7; }
 
-        /* Bottom Nav Fixed Alignment & Spacing */
+        /* Bottom Nav Bar */
         .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; height: 68px; background: #ffffff; border-top: 1px solid #e2e8f0; display: flex; justify-content: space-evenly; align-items: center; z-index: 100; box-shadow: 0 -4px 12px rgba(0,0,0,0.04); }
         .nav-item { display: flex; flex-direction: column; align-items: center; font-size: 11px; color: #64748b; gap: 4px; font-weight: 600; cursor: pointer; width: 25%; text-align: center; }
         .nav-item.active { color: #059669; font-weight: 800; }
@@ -59,11 +59,21 @@
         .short-card { background: #0f172a; color: #ffffff; border-radius: 24px; padding: 20px; }
         .short-btn { background: #059669; color: #ffffff; border: none; padding: 10px 20px; border-radius: 12px; font-weight: 700; margin-top: 10px; cursor: pointer; }
 
-        /* Profile Section */
+        /* Enhanced User Profile Setup Page */
         .profile-container { padding: 20px; }
-        .profile-card { background: #ffffff; padding: 20px; border-radius: 20px; border: 1px solid #f1f5f9; display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
-        .profile-avatar { width: 50px; height: 50px; background: #ecfdf5; color: #059669; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 800; }
-        .menu-item { background: #fff; padding: 16px 20px; border-radius: 12px; margin-bottom: 10px; border: 1px solid #f1f5f9; font-size: 14px; font-weight: 600; }
+        .user-profile-header { background: #ffffff; padding: 24px; border-radius: 24px; border: 1px solid #f1f5f9; display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+        .user-avatar-large { width: 72px; height: 72px; background: #ecfdf5; color: #059669; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 800; margin-bottom: 12px; border: 2px solid #a7f3d0; }
+        .user-name-input { font-size: 18px; font-weight: 800; color: #0f172a; border: none; background: transparent; text-align: center; outline: none; border-bottom: 1px dashed #cbd5e1; padding-bottom: 2px; width: 80%; }
+        .user-email-text { font-size: 13px; color: #64748b; margin-top: 4px; font-weight: 500; }
+        
+        .profile-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+        .p-stat-box { background: #ffffff; padding: 16px; border-radius: 18px; border: 1px solid #f1f5f9; text-align: center; }
+        .p-stat-box h4 { font-size: 18px; font-weight: 800; color: #059669; }
+        .p-stat-box p { font-size: 12px; color: #64748b; margin-top: 2px; font-weight: 600; }
+
+        .menu-list { background: #ffffff; border-radius: 20px; border: 1px solid #f1f5f9; overflow: hidden; }
+        .menu-item { padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f1f5f9; font-size: 14px; font-weight: 600; color: #334155; cursor: pointer; }
+        .menu-item:last-child { border-bottom: none; }
 
         /* App Details Overlay Page */
         .details-page { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #ffffff; z-index: 200; display: none; overflow-y: auto; padding-bottom: 40px; }
@@ -193,19 +203,48 @@
         </div>
     </div>
 
-    <!-- 4. ACCOUNT TAB -->
+    <!-- 4. ACCOUNT / USER PROFILE TAB -->
     <div id="accountPage" class="page-section">
         <div class="profile-container">
-            <div class="profile-card">
-                <div class="profile-avatar">JM</div>
-                <div><h3>FastApp User</h3><p style="font-size:12px; color:#64748b;">user@fastappstore.com</p></div>
+            <div class="user-profile-header">
+                <div class="user-avatar-large">JM</div>
+                <input type="text" class="user-name-input" value="Jashan Mattu" />
+                <div class="user-email-text">jashan@fastappstore.com</div>
             </div>
-            <div class="menu-item" onclick="alert('FastApp Store Engine Active')">📦 Installed Apps</div>
-            <div class="menu-item" onclick="alert('All Apps are Updated')">🔄 Check Updates</div>
+
+            <div class="profile-stats-grid">
+                <div class="p-stat-box">
+                    <h4>3</h4>
+                    <p>Apps Installed</p>
+                </div>
+                <div class="p-stat-box">
+                    <h4>50%</h4>
+                    <p>Data Saved</p>
+                </div>
+            </div>
+
+            <div class="menu-list">
+                <div class="menu-item" onclick="alert('Manage your downloaded APK packages here.')">
+                    <span>📦 My Downloads</span>
+                    <span>➔</span>
+                </div>
+                <div class="menu-item" onclick="alert('FastApp Store is up to date (v1.0)')">
+                    <span>🔄 Check for Updates</span>
+                    <span>➔</span>
+                </div>
+                <div class="menu-item" onclick="alert('High speed proxy compression enabled.')">
+                    <span>⚡ Data Saver Settings</span>
+                    <span>➔</span>
+                </div>
+                <div class="menu-item" onclick="alert('Logged out successfully.')" style="color: #ef4444;">
+                    <span>🚪 Logout Account</span>
+                    <span>➔</span>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- BOTTOM NAV BAR (WITH BALANCED SPACING) -->
+    <!-- BOTTOM NAV BAR -->
     <div class="bottom-nav">
         <div class="nav-item active" id="btnApps" onclick="goTab('appsPage', 'btnApps')">
             <span class="nav-icon">📱</span>
@@ -294,5 +333,5 @@
         }
     </script>
 </body>
-    </html>
+                    </html>
                     
