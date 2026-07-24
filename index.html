@@ -9,21 +9,17 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
         body { background-color: #f8fafc; color: #0f172a; padding-bottom: 80px; }
         
-        /* Top Navigation Header */
         .top-bar { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; background: #ffffff; position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
         .logo-section { display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 20px; color: #059669; letter-spacing: -0.5px; }
         .logo-icon { width: 32px; height: 32px; background: #ecfdf5; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
         
-        /* Search Bar */
         .search-container { padding: 16px 20px 8px 20px; }
         .search-box { width: 100%; padding: 14px 20px; border-radius: 16px; border: 1px solid #e2e8f0; background: #ffffff; font-size: 14px; outline: none; box-shadow: 0 2px 6px rgba(0,0,0,0.02); color: #1e293b; font-weight: 500; }
         
-        /* Section Title */
         .section-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px 8px 20px; }
         .section-title { font-size: 18px; font-weight: 800; color: #0f172a; }
         .fastapp-green { color: #059669; font-weight: 700; }
 
-        /* Horizontal Card Scroll */
         .horizontal-scroll { display: flex; gap: 16px; overflow-x: auto; padding: 8px 20px 16px 20px; scrollbar-width: none; }
         .horizontal-scroll::-webkit-scrollbar { display: none; }
         .square-card { min-width: 115px; max-width: 115px; display: flex; flex-direction: column; cursor: pointer; }
@@ -32,7 +28,6 @@
         .square-size { font-size: 12px; }
         .square-rating { font-size: 11px; color: #64748b; font-weight: 600; margin-top: 2px; }
 
-        /* Vertical App List */
         .app-list-vertical { display: flex; flex-direction: column; gap: 16px; padding: 8px 20px; }
         .list-item { display: flex; align-items: center; gap: 16px; cursor: pointer; background: #ffffff; padding: 14px; border-radius: 20px; border: 1px solid #f1f5f9; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
         .list-icon { width: 62px; height: 62px; border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 32px; flex-shrink: 0; }
@@ -46,15 +41,13 @@
         .bg-1 { background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); }
         .bg-2 { background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%); }
         .bg-3 { background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%); }
-        .bg-4 { background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); }
 
-        /* Bottom Nav */
-        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; height: 65px; background: #ffffff; border-top: 1px solid #e2e8f0; display: flex; justify-content: space-around; align-items: center; z-index: 100; }
+        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; height: 65px; background: #ffffff; border-top: 1px solid #e2e8f0; display: flex; justify-around: space-around; align-items: center; z-index: 100; }
         .nav-item { display: flex; flex-direction: column; align-items: center; font-size: 11px; color: #64748b; gap: 4px; font-weight: 600; }
         .nav-item.active { color: #059669; font-weight: 800; }
         .nav-icon { font-size: 20px; }
 
-        /* Full App Details Overlay Page */
+        /* Full App Details Overlay */
         .details-page { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #ffffff; z-index: 200; display: none; overflow-y: auto; padding-bottom: 40px; }
         .details-header { display: flex; align-items: center; padding: 16px 20px; border-bottom: 1px solid #f1f5f9; }
         .back-btn { font-size: 24px; cursor: pointer; margin-right: 16px; border: none; background: none; color: #0f172a; }
@@ -96,23 +89,23 @@
             <div class="section-title">Suggested for You</div>
         </div>
         <div class="horizontal-scroll">
-            <div class="square-card" onclick="openDetails('Photo Editor Lite', '📸', '12 MB', '4.5', 'bg-1', 'Edit and enhance your photos in seconds with lite ultra-fast tools.')">
-                <div class="square-icon bg-1">📸</div>
-                <div class="square-title">Photo Editor</div>
-                <div class="square-size fastapp-green">FastApp: 12 MB</div>
-                <div class="square-rating">★ 4.5</div>
+            <div class="square-card" onclick="openDetails('F-Droid Store', '📱', '10 MB', '4.8', 'bg-1', 'Free and open source Android app store replacement.', 'https://f-droid.org/F-Droid.apk')">
+                <div class="square-icon bg-1">📱</div>
+                <div class="square-title">F-Droid Store</div>
+                <div class="square-size fastapp-green">FastApp: 10 MB</div>
+                <div class="square-rating">★ 4.8</div>
             </div>
-            <div class="square-card" onclick="openDetails('Speed Browser', '🌐', '8 MB', '4.7', 'bg-2', 'Supercharged browsing experience with zero lag and low memory usage.')">
-                <div class="square-icon bg-2">🌐</div>
-                <div class="square-title">Speed Browser</div>
-                <div class="square-size fastapp-green">FastApp: 8 MB</div>
+            <div class="square-card" onclick="openDetails('VLC Player Lite', '🎬', '18 MB', '4.7', 'bg-2', 'Fast media player that plays all video and audio formats effortlessly.', 'https://get.videolan.org/vlc-android/3.5.4/VLC-Android-3.5.4-arm64-v8a.apk')">
+                <div class="square-icon bg-2">🎬</div>
+                <div class="square-title">VLC Player</div>
+                <div class="square-size fastapp-green">FastApp: 18 MB</div>
                 <div class="square-rating">★ 4.7</div>
             </div>
-            <div class="square-card" onclick="openDetails('ChatLite Messenger', '💬', '15 MB', '4.3', 'bg-3', 'Connect with friends fast using lightweight compressed data engine.')">
+            <div class="square-card" onclick="openDetails('NewPipe Lite', '📺', '11 MB', '4.9', 'bg-3', 'Lightweight media client built for speed and low data consumption.', 'https://github.com/TeamNewPipe/NewPipe/releases/download/v0.27.2/NewPipe_v0.27.2.apk')">
                 <div class="square-icon bg-3">💬</div>
-                <div class="square-title">ChatLite</div>
-                <div class="square-size fastapp-green">FastApp: 15 MB</div>
-                <div class="square-rating">★ 4.3</div>
+                <div class="square-title">NewPipe Lite</div>
+                <div class="square-size fastapp-green">FastApp: 11 MB</div>
+                <div class="square-rating">★ 4.9</div>
             </div>
         </div>
 
@@ -121,32 +114,32 @@
         </div>
         <div class="app-list-vertical" id="appList">
             
-            <div class="list-item" onclick="openDetails('Photo Editor Lite', '📸', '12 MB', '4.5', 'bg-1', 'Edit and enhance your photos in seconds with lite ultra-fast tools.')">
-                <div class="list-icon bg-1">📸</div>
+            <div class="list-item" onclick="openDetails('F-Droid Store', '📱', '10 MB', '4.8', 'bg-1', 'Free and open source Android app store replacement.', 'https://f-droid.org/F-Droid.apk')">
+                <div class="list-icon bg-1">📱</div>
                 <div class="list-details">
-                    <div class="list-title app-name">Photo Editor Lite</div>
-                    <div class="list-sub">Edit and enhance photos quickly</div>
-                    <div class="list-meta">★ 4.5 • <span class="fastapp-green">FastApp: 12 MB</span></div>
+                    <div class="list-title app-name">F-Droid Store</div>
+                    <div class="list-sub">Open source app repository</div>
+                    <div class="list-meta">★ 4.8 • <span class="fastapp-green">FastApp: 10 MB</span></div>
                 </div>
                 <button class="btn-install-small">Install</button>
             </div>
 
-            <div class="list-item" onclick="openDetails('Speed Browser', '🌐', '8 MB', '4.7', 'bg-2', 'Supercharged browsing experience with zero lag and low memory usage.')">
-                <div class="list-icon bg-2">🌐</div>
+            <div class="list-item" onclick="openDetails('VLC Player Lite', '🎬', '18 MB', '4.7', 'bg-2', 'Fast media player that plays all video and audio formats effortlessly.', 'https://get.videolan.org/vlc-android/3.5.4/VLC-Android-3.5.4-arm64-v8a.apk')">
+                <div class="list-icon bg-2">🎬</div>
                 <div class="list-details">
-                    <div class="list-title app-name">Speed Browser</div>
-                    <div class="list-sub">Fast and light web browser</div>
-                    <div class="list-meta">★ 4.7 • <span class="fastapp-green">FastApp: 8 MB</span></div>
+                    <div class="list-title app-name">VLC Player Lite</div>
+                    <div class="list-sub">Fast video & audio player</div>
+                    <div class="list-meta">★ 4.7 • <span class="fastapp-green">FastApp: 18 MB</span></div>
                 </div>
                 <button class="btn-install-small">Install</button>
             </div>
 
-            <div class="list-item" onclick="openDetails('ChatLite Messenger', '💬', '15 MB', '4.3', 'bg-3', 'Connect with friends fast using lightweight compressed data engine.')">
-                <div class="list-icon bg-3">💬</div>
+            <div class="list-item" onclick="openDetails('NewPipe Lite', '📺', '11 MB', '4.9', 'bg-3', 'Lightweight media client built for speed and low data consumption.', 'https://github.com/TeamNewPipe/NewPipe/releases/download/v0.27.2/NewPipe_v0.27.2.apk')">
+                <div class="list-icon bg-3">📺</div>
                 <div class="list-details">
-                    <div class="list-title app-name">ChatLite Messenger</div>
-                    <div class="list-sub">Low data messaging app</div>
-                    <div class="list-meta">★ 4.3 • <span class="fastapp-green">FastApp: 15 MB</span></div>
+                    <div class="list-title app-name">NewPipe Lite</div>
+                    <div class="list-sub">Lightweight video streaming app</div>
+                    <div class="list-meta">★ 4.9 • <span class="fastapp-green">FastApp: 11 MB</span></div>
                 </div>
                 <button class="btn-install-small">Install</button>
             </div>
@@ -160,7 +153,7 @@
         </div>
     </div>
 
-    <!-- App Detail View (Full Page Overlay) -->
+    <!-- App Detail View -->
     <div id="detailsPage" class="details-page">
         <div class="details-header">
             <button class="back-btn" onclick="closeDetails()">←</button>
@@ -206,10 +199,10 @@
     </div>
 
     <script>
-        let currentApp = "";
+        let currentDownloadUrl = "";
 
-        function openDetails(name, icon, size, rating, bgClass, desc) {
-            currentApp = name;
+        function openDetails(name, icon, size, rating, bgClass, desc, apkUrl) {
+            currentDownloadUrl = apkUrl;
             document.getElementById('dTitle').innerText = name;
             document.getElementById('dIcon').innerText = icon;
             document.getElementById('dIcon').className = 'details-icon ' + bgClass;
@@ -225,7 +218,11 @@
         }
 
         function triggerDownload() {
-            alert(currentApp + " ki Fast APK download ho rahi hai!");
+            if(currentDownloadUrl) {
+                window.location.href = currentDownloadUrl;
+            } else {
+                alert("Download link active nahi hai!");
+            }
         }
 
         function filterApps() {
@@ -239,5 +236,5 @@
         }
     </script>
 </body>
-    </html>
-    
+                    </html>
+                    
