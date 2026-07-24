@@ -6,64 +6,103 @@
     <title>FastApp Store - Kam MB, Fast Install</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, sans-serif; }
-        body { background-color: #0f172a; color: #fff; padding: 16px; }
+        body { background-color: #0d131e; color: #fff; padding: 16px; }
         
-        .header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 16px; border-bottom: 1px solid #334155; }
-        .logo { font-size: 20px; font-weight: bold; color: #22c55e; }
-        .badge { background: #1e293b; color: #22c55e; border: 1px solid #22c55e; padding: 4px 8px; border-radius: 12px; font-size: 12px; }
+        /* Header */
+        .header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 16px; }
+        .logo { font-size: 20px; font-weight: bold; color: #00ff88; display: flex; align-items: center; gap: 6px; }
+        .badge { background: #152238; color: #00ff88; border: 1px solid #00ff8844; padding: 6px 12px; border-radius: 20px; font-size: 12px; }
         
-        .search-box { margin: 16px 0; }
-        .search-input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #1e293b; color: #fff; font-size: 15px; }
+        /* Search Bar */
+        .search-box { margin: 16px 0 20px 0; }
+        .search-input { width: 100%; padding: 14px; border-radius: 10px; border: 1px solid #24344d; background: #152238; color: #fff; font-size: 15px; outline: none; }
         
-        .app-list { display: flex; flex-direction: column; gap: 12px; }
-        .app-card { display: flex; align-items: center; background: #1e293b; padding: 12px; border-radius: 10px; justify-content: space-between; }
+        /* App Card List */
+        .app-list { display: flex; flex-direction: column; gap: 14px; }
+        .app-card { display: flex; align-items: center; background: #152238; padding: 14px; border-radius: 12px; justify-content: space-between; border: 1px solid #24344d; }
         .app-info { display: flex; align-items: center; gap: 12px; }
-        .app-icon { width: 48px; height: 48px; border-radius: 10px; background: #334155; }
-        .app-details h4 { font-size: 16px; margin-bottom: 4px; }
-        .app-details p { font-size: 12px; color: #94a3b8; }
-        .size-tag { color: #22c55e; font-weight: bold; }
+        .app-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; background: #24344d; }
+        .app-details h4 { font-size: 16px; margin-bottom: 4px; color: #fff; }
+        .app-details p { font-size: 12px; color: #8a99ad; }
+        .size-tag { color: #00ff88; font-weight: bold; }
         
-        .btn-install { background: #22c55e; color: #000; border: none; padding: 8px 16px; border-radius: 6px; font-weight: bold; cursor: pointer; }
+        /* Install Button */
+        .btn-install { background: #00ff88; color: #0d131e; border: none; padding: 8px 18px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 14px; }
         .btn-install:active { transform: scale(0.95); }
     </style>
 </head>
 <body>
 
+    <!-- Header -->
     <div class="header">
         <div class="logo">⚡ FastApp Store</div>
         <div class="badge">Data Saver Active</div>
     </div>
 
+    <!-- Search Bar -->
     <div class="search-box">
-        <input type="text" class="search-input" placeholder="Search apps (e.g. Camera, WhatsApp)...">
+        <input type="text" class="search-input" id="searchInput" placeholder="Search apps (e.g. Camera, WhatsApp)..." onkeyup="filterApps()">
     </div>
 
-    <div class="app-list">
+    <!-- Apps List -->
+    <div class="app-list" id="appList">
         
+        <!-- App Item 1 -->
         <div class="app-card">
             <div class="app-info">
-                <img src="https://via.placeholder.com/48" class="app-icon" alt="App">
+                <div class="app-icon">📸</div>
                 <div class="app-details">
-                    <h4>Photo Editor Lite</h4>
+                    <h4 class="app-name">Photo Editor Lite</h4>
                     <p>Play Store: <s>45 MB</s> ➔ <span class="size-tag">FastApp: 12 MB</span></p>
                 </div>
             </div>
-            <button class="btn-install" onclick="alert('Downloading Fast APK (50% Data Saved)!')">Install</button>
+            <button class="btn-install" onclick="downloadAPK('Photo Editor Lite')">Install</button>
         </div>
 
+        <!-- App Item 2 -->
         <div class="app-card">
             <div class="app-info">
-                <img src="https://via.placeholder.com/48" class="app-icon" alt="App">
+                <div class="app-icon">🌐</div>
                 <div class="app-details">
-                    <h4>Speed Browser</h4>
+                    <h4 class="app-name">Speed Browser</h4>
                     <p>Play Store: <s>30 MB</s> ➔ <span class="size-tag">FastApp: 8 MB</span></p>
                 </div>
             </div>
-            <button class="btn-install" onclick="alert('Downloading Fast APK (50% Data Saved)!')">Install</button>
+            <button class="btn-install" onclick="downloadAPK('Speed Browser')">Install</button>
+        </div>
+
+        <!-- App Item 3 -->
+        <div class="app-card">
+            <div class="app-info">
+                <div class="app-icon">💬</div>
+                <div class="app-details">
+                    <h4 class="app-name">ChatLite Messenger</h4>
+                    <p>Play Store: <s>55 MB</s> ➔ <span class="size-tag">FastApp: 15 MB</span></p>
+                </div>
+            </div>
+            <button class="btn-install" onclick="downloadAPK('ChatLite Messenger')">Install</button>
         </div>
 
     </div>
 
+    <script>
+        function filterApps() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let cards = document.getElementsByClassName('app-card');
+            
+            for (let i = 0; i < cards.length; i++) {
+                let name = cards[i].querySelector('.app-name').innerText.toLowerCase();
+                if (name.includes(input)) {
+                    cards[i].style.display = "flex";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
+
+        function downloadAPK(appName) {
+            alert(appName + " ki Fast APK download ho rahi hai (50% Data Saved)!");
+        }
+    </script>
 </body>
-      </html>
-                                                    
+</html>
