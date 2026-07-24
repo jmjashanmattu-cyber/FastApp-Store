@@ -9,42 +9,37 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
         body { background-color: #f8fafc; color: #0f172a; padding-bottom: 80px; }
         
-        /* Top Navigation Header */
         .top-bar { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; background: #ffffff; position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-        .logo-section { display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 20px; color: #059669; letter-spacing: -0.5px; }
+        .logo-section { display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 20px; color: #059669; }
         .logo-icon { width: 32px; height: 32px; background: #ecfdf5; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
         
         .search-container { padding: 16px 20px 8px 20px; }
-        .search-box { width: 100%; padding: 14px 20px; border-radius: 16px; border: 1px solid #e2e8f0; background: #ffffff; font-size: 14px; outline: none; box-shadow: 0 2px 6px rgba(0,0,0,0.02); color: #1e293b; font-weight: 500; }
+        .search-box { width: 100%; padding: 14px 20px; border-radius: 16px; border: 1px solid #e2e8f0; background: #ffffff; font-size: 14px; outline: none; }
         
-        .section-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px 8px 20px; }
+        .section-header { padding: 16px 20px 8px 20px; }
         .section-title { font-size: 18px; font-weight: 800; color: #0f172a; }
         .fastapp-green { color: #059669; font-weight: 700; }
 
-        .horizontal-scroll { display: flex; gap: 16px; overflow-x: auto; padding: 8px 20px 16px 20px; scrollbar-width: none; }
-        .horizontal-scroll::-webkit-scrollbar { display: none; }
+        .horizontal-scroll { display: flex; gap: 16px; overflow-x: auto; padding: 8px 20px 16px 20px; }
         .square-card { min-width: 115px; max-width: 115px; display: flex; flex-direction: column; cursor: pointer; }
-        .square-icon { width: 115px; height: 115px; border-radius: 24px; display: flex; align-items: center; justify-content: center; font-size: 50px; margin-bottom: 10px; box-shadow: 0 8px 16px -4px rgba(0,0,0,0.06); border: 1px solid #f1f5f9; }
+        .square-icon { width: 115px; height: 115px; border-radius: 24px; display: flex; align-items: center; justify-content: center; font-size: 50px; margin-bottom: 8px; border: 1px solid #f1f5f9; }
         .square-title { font-size: 13px; font-weight: 700; color: #1e293b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .square-size { font-size: 12px; }
-        .square-rating { font-size: 11px; color: #64748b; font-weight: 600; margin-top: 2px; }
 
         .app-list-vertical { display: flex; flex-direction: column; gap: 16px; padding: 8px 20px; }
-        .list-item { display: flex; align-items: center; gap: 16px; cursor: pointer; background: #ffffff; padding: 14px; border-radius: 20px; border: 1px solid #f1f5f9; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+        .list-item { display: flex; align-items: center; gap: 16px; cursor: pointer; background: #ffffff; padding: 14px; border-radius: 20px; border: 1px solid #f1f5f9; }
         .list-icon { width: 62px; height: 62px; border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 32px; flex-shrink: 0; }
         .list-details { flex: 1; }
         .list-title { font-size: 15px; font-weight: 700; color: #0f172a; }
-        .list-sub { font-size: 12px; color: #64748b; margin: 3px 0; font-weight: 500; }
+        .list-sub { font-size: 12px; color: #64748b; margin: 3px 0; }
         .list-meta { font-size: 12px; color: #64748b; font-weight: 600; }
 
-        .btn-install-small { background: #ecfdf5; color: #059669; border: 1px solid #a7f3d0; padding: 8px 16px; border-radius: 20px; font-weight: 700; font-size: 12px; cursor: pointer; }
+        .btn-install-small { background: #ecfdf5; color: #059669; border: 1px solid #a7f3d0; padding: 8px 16px; border-radius: 20px; font-weight: 700; font-size: 12px; }
 
-        .bg-1 { background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); }
-        .bg-2 { background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%); }
-        .bg-3 { background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%); }
-        .bg-4 { background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); }
+        .bg-1 { background: #e0f2fe; }
+        .bg-2 { background: #fce7f3; }
+        .bg-3 { background: #dcfce7; }
+        .bg-4 { background: #fef3c7; }
 
-        /* Bottom Nav */
         .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; height: 65px; background: #ffffff; border-top: 1px solid #e2e8f0; display: flex; justify-content: space-around; align-items: center; z-index: 100; }
         .nav-item { display: flex; flex-direction: column; align-items: center; font-size: 11px; color: #64748b; gap: 4px; font-weight: 600; cursor: pointer; }
         .nav-item.active { color: #059669; font-weight: 800; }
@@ -53,91 +48,59 @@
         .page-section { display: none; }
         .page-section.active { display: block; }
 
-        /* Shorts Container */
+        /* Shorts Section */
         .shorts-container { padding: 10px 20px; display: flex; flex-direction: column; gap: 20px; }
-        .short-card { background: #0f172a; color: #ffffff; border-radius: 24px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.15); position: relative; }
-        .short-video-placeholder { height: 380px; background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%), #1e293b; display: flex; flex-direction: column; justify-content: space-between; padding: 20px; }
-        .short-badge { background: #059669; color: #fff; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; width: fit-content; }
-        .short-info h3 { font-size: 18px; font-weight: 800; margin-bottom: 6px; }
-        .short-info p { font-size: 13px; color: #cbd5e1; margin-bottom: 12px; }
-        .short-btn { background: #059669; color: #ffffff; border: none; padding: 10px 20px; border-radius: 12px; font-weight: 700; cursor: pointer; }
+        .short-card { background: #0f172a; color: #ffffff; border-radius: 24px; padding: 20px; }
+        .short-btn { background: #059669; color: #ffffff; border: none; padding: 10px 20px; border-radius: 12px; font-weight: 700; margin-top: 10px; cursor: pointer; }
 
-        /* Account Profile Page */
+        /* Profile Section */
         .profile-container { padding: 20px; }
-        .profile-card { background: #ffffff; padding: 20px; border-radius: 20px; border: 1px solid #f1f5f9; display: flex; align-items: center; gap: 16px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
-        .profile-avatar { width: 60px; height: 60px; background: #ecfdf5; color: #059669; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 800; }
-        .menu-list { background: #ffffff; border-radius: 20px; border: 1px solid #f1f5f9; overflow: hidden; }
-        .menu-item { padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f1f5f9; font-size: 14px; font-weight: 600; color: #334155; cursor: pointer; }
-        .menu-item:last-child { border-bottom: none; }
+        .profile-card { background: #ffffff; padding: 20px; border-radius: 20px; border: 1px solid #f1f5f9; display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+        .profile-avatar { width: 50px; height: 50px; background: #ecfdf5; color: #059669; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 800; }
+        .menu-item { background: #fff; padding: 16px 20px; border-radius: 12px; margin-bottom: 10px; border: 1px solid #f1f5f9; font-size: 14px; font-weight: 600; }
 
-        /* Detail Overlay View */
+        /* App Details Overlay */
         .details-page { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #ffffff; z-index: 200; display: none; overflow-y: auto; padding-bottom: 40px; }
         .details-header { display: flex; align-items: center; padding: 16px 20px; border-bottom: 1px solid #f1f5f9; }
-        .back-btn { font-size: 24px; cursor: pointer; margin-right: 16px; border: none; background: none; color: #0f172a; }
-        
+        .back-btn { font-size: 24px; cursor: pointer; margin-right: 16px; border: none; background: none; }
         .details-hero { display: flex; gap: 20px; padding: 20px; align-items: center; }
-        .details-icon { width: 80px; height: 80px; border-radius: 22px; display: flex; align-items: center; justify-content: center; font-size: 42px; flex-shrink: 0; }
-        .details-title h2 { font-size: 20px; font-weight: 800; color: #0f172a; }
-        .details-title p { font-size: 13px; color: #059669; font-weight: 700; margin-top: 4px; }
-
-        .details-stats { display: flex; justify-content: space-around; padding: 16px 20px; border-top: 1px solid #f1f5f9; border-bottom: 1px solid #f1f5f9; text-align: center; margin: 10px 20px; }
-        .stat-item h4 { font-size: 15px; font-weight: 800; color: #0f172a; }
-        .stat-item p { font-size: 11px; color: #64748b; margin-top: 2px; }
-
-        .btn-install-big { width: calc(100% - 40px); margin: 16px 20px; padding: 14px; background: #059669; color: #ffffff; border: none; border-radius: 16px; font-size: 16px; font-weight: 800; cursor: pointer; text-align: center; box-shadow: 0 8px 16px rgba(5, 150, 105, 0.25); }
-
-        .screenshots-title { font-size: 16px; font-weight: 800; padding: 10px 20px; color: #0f172a; }
-        .screenshots-scroll { display: flex; gap: 12px; overflow-x: auto; padding: 0 20px 20px 20px; scrollbar-width: none; }
-        .screenshot-box { min-width: 140px; height: 240px; background: #f1f5f9; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #94a3b8; border: 1px solid #e2e8f0; }
-
-        .description-box { padding: 0 20px; font-size: 13px; color: #475569; line-height: 1.6; }
+        .details-icon { width: 80px; height: 80px; border-radius: 22px; display: flex; align-items: center; justify-content: center; font-size: 42px; }
+        .btn-install-big { width: calc(100% - 40px); margin: 16px 20px; padding: 14px; background: #059669; color: #ffffff; border: none; border-radius: 16px; font-size: 16px; font-weight: 800; cursor: pointer; }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
     <div class="top-bar">
-        <div class="logo-section">
-            <div class="logo-icon">⚡</div>
-            <span>FastApp Store</span>
-        </div>
+        <div class="logo-section"><div class="logo-icon">⚡</div><span>FastApp Store</span></div>
     </div>
 
     <!-- 1. APPS TAB -->
     <div id="appsPage" class="page-section active">
         <div class="search-container">
-            <input type="text" class="search-box" placeholder="Search apps & games..." onkeyup="filterApps(this.value, 'appsList')">
+            <input type="text" class="search-box" placeholder="Search apps..." onkeyup="filterApps(this.value, 'appsList')">
         </div>
-
-        <div class="section-header">
-            <div class="section-title">Suggested Apps</div>
-        </div>
+        <div class="section-header"><div class="section-title">Suggested Apps</div></div>
         <div class="horizontal-scroll">
-            <div class="square-card" onclick="showApp('fdroid')">
+            <div class="square-card" onclick="openApp('F-Droid Store', '📱', '10 MB', '4.8', 'bg-1', 'Free and open source Android app store replacement.', 'https://f-droid.org/F-Droid.apk')">
                 <div class="square-icon bg-1">📱</div>
-                <div class="square-title">F-Droid Store</div>
-                <div class="square-size fastapp-green">FastApp: 10 MB</div>
-                <div class="square-rating">★ 4.8</div>
+                <div class="square-title">F-Droid</div>
+                <div style="font-size: 11px;" class="fastapp-green">FastApp: 10 MB</div>
             </div>
-            <div class="square-card" onclick="showApp('vlc')">
+            <div class="square-card" onclick="openApp('VLC Player', '🎬', '18 MB', '4.7', 'bg-2', 'Fast media player that plays all video and audio formats.', 'https://get.videolan.org/vlc-android/3.5.4/VLC-Android-3.5.4-arm64-v8a.apk')">
                 <div class="square-icon bg-2">🎬</div>
                 <div class="square-title">VLC Player</div>
-                <div class="square-size fastapp-green">FastApp: 18 MB</div>
-                <div class="square-rating">★ 4.7</div>
+                <div style="font-size: 11px;" class="fastapp-green">FastApp: 18 MB</div>
             </div>
-            <div class="square-card" onclick="showApp('newpipe')">
+            <div class="square-card" onclick="openApp('NewPipe Lite', '📺', '11 MB', '4.9', 'bg-3', 'Lightweight video player with zero ads.', 'https://github.com/TeamNewPipe/NewPipe/releases/download/v0.27.2/NewPipe_v0.27.2.apk')">
                 <div class="square-icon bg-3">📺</div>
                 <div class="square-title">NewPipe Lite</div>
-                <div class="square-size fastapp-green">FastApp: 11 MB</div>
-                <div class="square-rating">★ 4.9</div>
+                <div style="font-size: 11px;" class="fastapp-green">FastApp: 11 MB</div>
             </div>
         </div>
 
-        <div class="section-header">
-            <div class="section-title">Recommended Apps</div>
-        </div>
+        <div class="section-header"><div class="section-title">Recommended Apps</div></div>
         <div class="app-list-vertical" id="appsList">
-            <div class="list-item" onclick="showApp('fdroid')">
+            <div class="list-item" onclick="openApp('F-Droid Store', '📱', '10 MB', '4.8', 'bg-1', 'Free and open source Android app store replacement.', 'https://f-droid.org/F-Droid.apk')">
                 <div class="list-icon bg-1">📱</div>
                 <div class="list-details">
                     <div class="list-title app-name">F-Droid Store</div>
@@ -146,21 +109,12 @@
                 </div>
                 <div class="btn-install-small">View</div>
             </div>
-            <div class="list-item" onclick="showApp('vlc')">
+            <div class="list-item" onclick="openApp('VLC Player', '🎬', '18 MB', '4.7', 'bg-2', 'Fast media player that plays all video formats.', 'https://get.videolan.org/vlc-android/3.5.4/VLC-Android-3.5.4-arm64-v8a.apk')">
                 <div class="list-icon bg-2">🎬</div>
                 <div class="list-details">
-                    <div class="list-title app-name">VLC Player Lite</div>
+                    <div class="list-title app-name">VLC Player</div>
                     <div class="list-sub">Fast video & audio player</div>
                     <div class="list-meta">★ 4.7 • <span class="fastapp-green">FastApp: 18 MB</span></div>
-                </div>
-                <div class="btn-install-small">View</div>
-            </div>
-            <div class="list-item" onclick="showApp('newpipe')">
-                <div class="list-icon bg-3">📺</div>
-                <div class="list-details">
-                    <div class="list-title app-name">NewPipe Lite</div>
-                    <div class="list-sub">Lightweight video streaming app</div>
-                    <div class="list-meta">★ 4.9 • <span class="fastapp-green">FastApp: 11 MB</span></div>
                 </div>
                 <div class="btn-install-small">View</div>
             </div>
@@ -169,46 +123,22 @@
 
     <!-- 2. GAMES TAB -->
     <div id="gamesPage" class="page-section">
-        <div class="search-container">
-            <input type="text" class="search-box" placeholder="Search games..." onkeyup="filterApps(this.value, 'gamesList')">
-        </div>
-
-        <div class="section-header">
-            <div class="section-title">Trending Games</div>
-        </div>
-        <div class="horizontal-scroll">
-            <div class="square-card" onclick="showApp('kart')">
-                <div class="square-icon bg-4">🏎️</div>
-                <div class="square-title">SuperTuxKart</div>
-                <div class="square-size fastapp-green">FastApp: 15 MB</div>
-                <div class="square-rating">★ 4.6</div>
-            </div>
-            <div class="square-card" onclick="showApp('puzzle')">
-                <div class="square-icon bg-1">🔢</div>
-                <div class="square-title">2048 Puzzle</div>
-                <div class="square-size fastapp-green">FastApp: 3 MB</div>
-                <div class="square-rating">★ 4.9</div>
-            </div>
-        </div>
-
-        <div class="section-header">
-            <div class="section-title">Top Lite Games</div>
-        </div>
+        <div class="section-header"><div class="section-title">Trending Games</div></div>
         <div class="app-list-vertical" id="gamesList">
-            <div class="list-item" onclick="showApp('kart')">
+            <div class="list-item" onclick="openApp('SuperTuxKart', '🏎️', '15 MB', '4.6', 'bg-4', 'Fun 3D arcade racing game.', 'https://f-droid.org/F-Droid.apk')">
                 <div class="list-icon bg-4">🏎️</div>
                 <div class="list-details">
-                    <div class="list-title app-name">SuperTuxKart Lite</div>
-                    <div class="list-sub">3D Arcade Kart Racing</div>
+                    <div class="list-title app-name">SuperTuxKart</div>
+                    <div class="list-sub">3D Kart Racing</div>
                     <div class="list-meta">★ 4.6 • <span class="fastapp-green">FastApp: 15 MB</span></div>
                 </div>
                 <div class="btn-install-small">View</div>
             </div>
-            <div class="list-item" onclick="showApp('puzzle')">
+            <div class="list-item" onclick="openApp('2048 Puzzle', '🔢', '3 MB', '4.9', 'bg-1', 'Addictive logic puzzle game.', 'https://f-droid.org/F-Droid.apk')">
                 <div class="list-icon bg-1">🔢</div>
                 <div class="list-details">
-                    <div class="list-title app-name">2048 Puzzle Lite</div>
-                    <div class="list-sub">Mind & Logic Puzzle</div>
+                    <div class="list-title app-name">2048 Puzzle</div>
+                    <div class="list-sub">Math Logic Puzzle</div>
                     <div class="list-meta">★ 4.9 • <span class="fastapp-green">FastApp: 3 MB</span></div>
                 </div>
                 <div class="btn-install-small">View</div>
@@ -218,30 +148,12 @@
 
     <!-- 3. SHORTS TAB -->
     <div id="shortsPage" class="page-section">
-        <div class="section-header">
-            <div class="section-title">App Highlights & Benefits</div>
-        </div>
+        <div class="section-header"><div class="section-title">App Videos & Benefits</div></div>
         <div class="shorts-container">
             <div class="short-card">
-                <div class="short-video-placeholder">
-                    <div class="short-badge">⚡ Ultra Fast</div>
-                    <div class="short-info">
-                        <h3>NewPipe Lite Benefits</h3>
-                        <p>Background Play, Zero Ads, aur 70% Kam Internet Data use karein!</p>
-                        <button class="short-btn" onclick="showApp('newpipe')">Install Now (11 MB)</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="short-card">
-                <div class="short-video-placeholder">
-                    <div class="short-badge">🎬 All-in-One Player</div>
-                    <div class="short-info">
-                        <h3>Why Choose VLC Player?</h3>
-                        <p>Har tarah ki video aur audio bilkul smooth chalao bina lag ke!</p>
-                        <button class="short-btn" onclick="showApp('vlc')">Install Now (18 MB)</button>
-                    </div>
-                </div>
+                <h3>⚡ NewPipe Lite Highlight</h3>
+                <p style="font-size:13px; color:#cbd5e1; margin-top:6px;">Play videos in background, zero ads, and save 70% data.</p>
+                <button class="short-btn" onclick="openApp('NewPipe Lite', '📺', '11 MB', '4.9', 'bg-3', 'Lightweight video player with zero ads.', 'https://github.com/TeamNewPipe/NewPipe/releases/download/v0.27.2/NewPipe_v0.27.2.apk')">Install App (11 MB)</button>
             </div>
         </div>
     </div>
@@ -251,101 +163,89 @@
         <div class="profile-container">
             <div class="profile-card">
                 <div class="profile-avatar">JM</div>
-                <div>
-                    <h3 style="font-size: 16px; font-weight: 800;">FastApp User</h3>
-                    <p style="font-size: 12px; color: #64748b;">user@fastappstore.com</p>
-                </div>
+                <div><h3>FastApp User</h3><p style="font-size:12px; color:#64748b;">user@fastappstore.com</p></div>
             </div>
-
-            <div class="menu-list">
-                <div class="menu-item" onclick="alert('Aapne FastApp Store se active apps install ki hain.')">
-                    <span>📦 My Installed Apps</span>
-                    <span>➔</span>
-                </div>
-                <div class="menu-item" onclick="alert('App Update Check: All apps are up to date!')">
-                    <span>🔄 Check App Updates</span>
-                    <span>➔</span>
-                </div>
-                <div class="menu-item" onclick="alert('Data Saver is Active - High speed download enabled!')">
-                    <span>⚡ Data Saver Settings</span>
-                    <span>➔</span>
-                </div>
-                <div class="menu-item" onclick="alert('FastApp Store v1.0 Live')">
-                    <span>ℹ️ About FastApp Store</span>
-                    <span>➔</span>
-                </div>
-            </div>
+            <div class="menu-item" onclick="alert('FastApp Store Engine Active')">📦 Installed Apps</div>
+            <div class="menu-item" onclick="alert('All Apps are Updated')">🔄 Check Updates</div>
         </div>
     </div>
 
-    <!-- Bottom Navigation Bar -->
+    <!-- BOTTOM NAV -->
     <div class="bottom-nav">
-        <div class="nav-item active" id="tabApps" onclick="switchTab('appsPage', 'tabApps')">
-            <span class="nav-icon">📱</span>
-            <span>Apps</span>
-        </div>
-        <div class="nav-item" id="tabGames" onclick="switchTab('gamesPage', 'tabGames')">
-            <span class="nav-icon">🎮</span>
-            <span>Games</span>
-        </div>
-        <div class="nav-item" id="tabShorts" onclick="switchTab('shortsPage', 'tabShorts')">
-            <span class="nav-icon">🎬</span>
-            <span>Shorts</span>
-        </div>
-        <div class="nav-item" id="tabAccount" onclick="switchTab('accountPage', 'tabAccount')">
-            <span class="nav-icon">👤</span>
-            <span>Account</span>
-        </div>
+        <div class="nav-item active" id="btnApps" onclick="goTab('appsPage', 'btnApps')"><span class="nav-icon">📱</span><span>Apps</span></div>
+        <div class="nav-item" id="btnGames" onclick="goTab('gamesPage', 'btnGames')"><span class="nav-icon">🎮</span><span>Games</span></div>
+        <div class="nav-item" id="btnShorts" onclick="goTab('shortsPage', 'btnShorts')"><span class="nav-icon">🎬</span><span>Shorts</span></div>
+        <div class="nav-item" id="btnAccount" onclick="goTab('accountPage', 'btnAccount')"><span class="nav-icon">👤</span><span>Account</span></div>
     </div>
 
-    <!-- App Detail View -->
+    <!-- APP DETAILS OVERLAY PAGE -->
     <div id="detailsPage" class="details-page">
         <div class="details-header">
-            <button class="back-btn" onclick="closeDetails()">←</button>
-            <span style="font-weight: 700; font-size: 16px;">App Details</span>
+            <button class="back-btn" onclick="closeApp()">←</button>
+            <span style="font-weight: 700;">App Details</span>
         </div>
-
         <div class="details-hero">
-            <div id="dIcon" class="details-icon"></div>
-            <div class="details-title">
-                <h2 id="dTitle">App Name</h2>
-                <p id="dSize">FastApp: 12 MB</p>
+            <div id="appBoxIcon" class="details-icon"></div>
+            <div>
+                <h2 id="appBoxName">App Name</h2>
+                <p id="appBoxSize" class="fastapp-green" style="font-size:13px; margin-top:4px;">FastApp: 12 MB</p>
             </div>
         </div>
-
-        <div class="details-stats">
-            <div class="stat-item">
-                <h4 id="dRating">4.5 ★</h4>
-                <p>Rating</p>
-            </div>
-            <div class="stat-item">
-                <h4>500K+</h4>
-                <p>Downloads</p>
-            </div>
-            <div class="stat-item">
-                <h4>3+</h4>
-                <p>Rated for 3+</p>
-            </div>
-        </div>
-
-        <button class="btn-install-big" onclick="triggerDownload()">Install App</button>
-
-        <div class="screenshots-title">Preview</div>
-        <div class="screenshots-scroll">
-            <div class="screenshot-box">Preview 1</div>
-            <div class="screenshot-box">Preview 2</div>
-            <div class="screenshot-box">Preview 3</div>
-        </div>
-
-        <div class="screenshots-title">About this app</div>
-        <div class="description-box" id="dDesc">
-            App description goes here.
+        <button class="btn-install-big" onclick="startDownload()">Install App</button>
+        <div style="padding:0 20px;">
+            <h4 style="margin-bottom:6px;">About this app</h4>
+            <p id="appBoxDesc" style="font-size:13px; color:#475569; line-height:1.5;"></p>
         </div>
     </div>
 
     <script>
-        const appsData = {
-            'fdroid': { name: 'F-Droid Store', icon: '📱', size: '10 MB', rating: '4.8', bg: 'bg-1', desc: 'Free and open source Android app store replacement.', url: 'https://f-droid.org/F-Droid.apk' },
-            'vlc': { name: 'VLC Player Lite', icon: '🎬', size: '18 MB', rating: '4.7', bg: 'bg-2', desc: 'Fast media player that plays all video and audio formats effortlessly.', url: 'https://get.videolan.org/vlc-android/3.5.4/VLC-Android-3.5.4-arm64-v8a.apk' },
-            'newpipe': { name: 'NewPipe Lite', icon: '📺', size: '11 MB', rating: '4.9', bg: 'bg-3', desc: 'Lightweight media client built for speed and low data consumption.', url: 'https://github.com/TeamNewPipe/NewPipe/releases/download/v0.27.2/NewPipe_v0.27.2.apk' },
-            'kart': { name: 'SuperTuxKart Lite', icon: '🏎️', size: '15 MB', rating: '4.6', bg: 'bg-4', desc: 'Fun and fast 3D arcade racing game with cute charac
+        var currentUrl = "";
+
+        function openApp(name, icon, size, rating, bg, desc, url) {
+            currentUrl = url;
+            document.getElementById('appBoxName').innerText = name;
+            document.getElementById('appBoxIcon').innerText = icon;
+            document.getElementById('appBoxIcon').className = 'details-icon ' + bg;
+            document.getElementById('appBoxSize').innerText = 'FastApp: ' + size;
+            document.getElementById('appBoxDesc').innerText = desc;
+            document.getElementById('detailsPage').style.display = 'block';
+        }
+
+        function closeApp() {
+            document.getElementById('detailsPage').style.display = 'none';
+        }
+
+        function startDownload() {
+            if (currentUrl) {
+                window.location.href = currentUrl;
+            } else {
+                alert('Download URL not found');
+            }
+        }
+
+        function goTab(pageId, btnId) {
+            var pages = document.querySelectorAll('.page-section');
+            for (var i = 0; i < pages.length; i++) {
+                pages[i].classList.remove('active');
+            }
+            document.getElementById(pageId).classList.add('active');
+
+            var btns = document.querySelectorAll('.nav-item');
+            for (var j = 0; j < btns.length; j++) {
+                btns[j].classList.remove('active');
+            }
+            document.getElementById(btnId).classList.add('active');
+        }
+
+        function filterApps(text, listId) {
+            var val = text.toLowerCase();
+            var items = document.getElementById(listId).getElementsByClassName('list-item');
+            for (var i = 0; i < items.length; i++) {
+                var name = items[i].querySelector('.app-name').innerText.toLowerCase();
+                items[i].style.display = name.indexOf(val) > -1 ? 'flex' : 'none';
+            }
+        }
+    </script>
+</body>
+    </html>
+                    
