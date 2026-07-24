@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastApp Store - Kam MB, Fast Install</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, sans-serif; }
+        body { background-color: #0f172a; color: #fff; padding: 16px; }
+        
+        .header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 16px; border-bottom: 1px solid #334155; }
+        .logo { font-size: 20px; font-weight: bold; color: #22c55e; }
+        .badge { background: #1e293b; color: #22c55e; border: 1px solid #22c55e; padding: 4px 8px; border-radius: 12px; font-size: 12px; }
+        
+        .search-box { margin: 16px 0; }
+        .search-input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #1e293b; color: #fff; font-size: 15px; }
+        
+        .app-list { display: flex; flex-direction: column; gap: 12px; }
+        .app-card { display: flex; align-items: center; background: #1e293b; padding: 12px; border-radius: 10px; justify-content: space-between; }
+        .app-info { display: flex; align-items: center; gap: 12px; }
+        .app-icon { width: 48px; height: 48px; border-radius: 10px; background: #334155; }
+        .app-details h4 { font-size: 16px; margin-bottom: 4px; }
+        .app-details p { font-size: 12px; color: #94a3b8; }
+        .size-tag { color: #22c55e; font-weight: bold; }
+        
+        .btn-install { background: #22c55e; color: #000; border: none; padding: 8px 16px; border-radius: 6px; font-weight: bold; cursor: pointer; }
+        .btn-install:active { transform: scale(0.95); }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo">⚡ FastApp Store</div>
+        <div class="badge">Data Saver Active</div>
+    </div>
+
+    <div class="search-box">
+        <input type="text" class="search-input" placeholder="Search apps (e.g. Camera, WhatsApp)...">
+    </div>
+
+    <div class="app-list">
+        
+        <div class="app-card">
+            <div class="app-info">
+                <img src="https://via.placeholder.com/48" class="app-icon" alt="App">
+                <div class="app-details">
+                    <h4>Photo Editor Lite</h4>
+                    <p>Play Store: <s>45 MB</s> ➔ <span class="size-tag">FastApp: 12 MB</span></p>
+                </div>
+            </div>
+            <button class="btn-install" onclick="alert('Downloading Fast APK (50% Data Saved)!')">Install</button>
+        </div>
+
+        <div class="app-card">
+            <div class="app-info">
+                <img src="https://via.placeholder.com/48" class="app-icon" alt="App">
+                <div class="app-details">
+                    <h4>Speed Browser</h4>
+                    <p>Play Store: <s>30 MB</s> ➔ <span class="size-tag">FastApp: 8 MB</span></p>
+                </div>
+            </div>
+            <button class="btn-install" onclick="alert('Downloading Fast APK (50% Data Saved)!')">Install</button>
+        </div>
+
+    </div>
+
+</body>
+      </html>
+                                                    
