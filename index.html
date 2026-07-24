@@ -51,7 +51,7 @@
         .bg-4 { background: #fef3c7; }
 
         /* Bottom Nav */
-        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; height: 68px; background: #ffffff; border-top: 1px solid #e2e8f0; display: flex; justify-content: space-evenly; align-items: center; z-index: 100; box-shadow: 0 -4px 12px rgba(0,0,0,0.04); }
+        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; height: 68px; background: #ffffff; border-top: 1px solid #e2e8f0; display: flex; justify-content: space-evenly; align-items: center; z-index: 1000; box-shadow: 0 -4px 12px rgba(0,0,0,0.04); }
         .nav-item { display: flex; flex-direction: column; align-items: center; font-size: 11px; color: #64748b; gap: 4px; font-weight: 600; cursor: pointer; width: 25%; text-align: center; }
         .nav-item.active { color: #059669; font-weight: 800; }
         .nav-icon { font-size: 22px; line-height: 1; }
@@ -67,8 +67,8 @@
         /* Account Section */
         .profile-container { padding: 20px; }
         .user-profile-header { background: #ffffff; padding: 24px; border-radius: 24px; border: 1px solid #f1f5f9; display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
-        .user-avatar-large { width: 72px; height: 72px; background: #ecfdf5; color: #059669; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 800; margin-bottom: 12px; border: 2px solid #a7f3d0; background-size: cover; background-position: center; cursor: pointer; }
-        .user-name-display { font-size: 18px; font-weight: 800; color: #0f172a; cursor: pointer; }
+        .user-avatar-large { width: 72px; height: 72px; background: #ecfdf5; color: #059669; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 800; margin-bottom: 12px; border: 2px solid #a7f3d0; background-size: cover; background-position: center; }
+        .user-name-display { font-size: 18px; font-weight: 800; color: #0f172a; }
         .user-email-text { font-size: 13px; color: #64748b; margin-top: 4px; font-weight: 500; }
         
         .menu-list { background: #ffffff; border-radius: 20px; border: 1px solid #f1f5f9; overflow: hidden; }
@@ -76,8 +76,17 @@
         .menu-item:last-child { border-bottom: none; }
         .menu-item-sub { font-size: 12px; color: #059669; font-weight: 700; margin-top: 2px; }
 
+        /* Custom Name Input Modal */
+        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.6); z-index: 2000; display: none; align-items: center; justify-content: center; padding: 20px; }
+        .modal-card { background: #ffffff; width: 100%; max-width: 340px; border-radius: 24px; padding: 24px; text-align: center; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
+        .modal-title { font-size: 18px; font-weight: 800; color: #0f172a; margin-bottom: 14px; }
+        .modal-input { width: 100%; padding: 12px 16px; border-radius: 12px; border: 1px solid #cbd5e1; font-size: 15px; outline: none; margin-bottom: 16px; }
+        .modal-btns { display: flex; gap: 10px; }
+        .btn-modal-save { flex: 1; padding: 12px; background: #059669; color: #fff; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; }
+        .btn-modal-cancel { flex: 1; padding: 12px; background: #f1f5f9; color: #475569; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; }
+
         /* Details Overlay */
-        .details-page { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #ffffff; z-index: 200; display: none; overflow-y: auto; padding-bottom: 40px; }
+        .details-page { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #ffffff; z-index: 1500; display: none; overflow-y: auto; padding-bottom: 40px; }
         .details-header { display: flex; align-items: center; padding: 16px 20px; border-bottom: 1px solid #f1f5f9; }
         .back-btn { font-size: 24px; cursor: pointer; margin-right: 16px; border: none; background: none; }
         .details-hero { display: flex; gap: 20px; padding: 20px; align-items: center; }
@@ -193,14 +202,14 @@
     <div id="accountPage" class="page-section">
         <div class="profile-container">
             <div class="user-profile-header">
-                <div id="userAvatar" class="user-avatar-large" onclick="changeUserName()">U</div>
-                <div id="userName" class="user-name-display" onclick="changeUserName()">FastApp Member</div>
+                <div id="userAvatar" class="user-avatar-large">U</div>
+                <div id="userName" class="user-name-display">FastApp Member</div>
                 <div id="userEmail" class="user-email-text">user@fastappstore.com</div>
             </div>
 
             <div class="menu-list">
-                <!-- Change Name Menu Item -->
-                <div class="menu-item" onclick="changeUserName()">
+                <!-- Change Display Name Option -->
+                <div class="menu-item" onclick="openNameModal()">
                     <div>
                         <div>✏️ Account Display Name</div>
                         <div id="menuCurrentName" class="menu-item-sub">Click to edit name</div>
@@ -239,6 +248,18 @@
         </div>
     </div>
 
+    <!-- NAME EDIT MODAL -->
+    <div id="nameModal" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-title">Edit Name</div>
+            <input type="text" id="nameInputModal" class="modal-input" placeholder="Type new name...">
+            <div class="modal-btns">
+                <button class="btn-modal-cancel" onclick="closeNameModal()">Cancel</button>
+                <button class="btn-modal-save" onclick="saveNewName()">Save</button>
+            </div>
+        </div>
+    </div>
+
     <!-- DETAILS PAGE OVERLAY -->
     <div id="detailsPage" class="details-page">
         <div class="details-header">
@@ -262,7 +283,7 @@
     <script>
         var currentUrl = "";
 
-        // Safe JSON Parser for Google Credential
+        // Safe JWT Token Parser
         function parseJwt(token) {
             try {
                 var base64Url = token.split('.')[1];
@@ -274,7 +295,7 @@
             } catch(e) { return null; }
         }
 
-        // Google 1-Tap Login Callback
+        // Google 1-Tap Callback
         function handleCredentialResponse(response) {
             if(!response || !response.credential) return;
             var userData = parseJwt(response.credential);
@@ -290,17 +311,26 @@
             }
         }
 
-        // Edit Name Action
-        function changeUserName() {
+        // Modal Name Changing Logic
+        function openNameModal() {
             var current = localStorage.getItem('fa_user') || 'FastApp Member';
-            var newName = prompt("Naya Name likhein:", current);
-            
-            if (newName && newName.trim() !== "") {
-                var cleanName = newName.trim();
-                localStorage.setItem('fa_user', cleanName);
+            document.getElementById('nameInputModal').value = current;
+            document.getElementById('nameModal').style.display = 'flex';
+        }
+
+        function closeNameModal() {
+            document.getElementById('nameModal').style.display = 'none';
+        }
+
+        function saveNewName() {
+            var val = document.getElementById('nameInputModal').value;
+            if(val && val.trim() !== '') {
+                var clean = val.trim();
+                localStorage.setItem('fa_user', clean);
                 localStorage.setItem('fa_custom_name', 'true');
                 loadProfileInfo();
             }
+            closeNameModal();
         }
 
         function loadProfileInfo() {
@@ -308,50 +338,4 @@
             var savedEmail = localStorage.getItem('fa_mail') || 'user@fastappstore.com';
             var savedPic = localStorage.getItem('fa_pic');
 
-            var uNameEl = document.getElementById('userName');
-            var uMailEl = document.getElementById('userEmail');
-            var menuSubEl = document.getElementById('menuCurrentName');
-            var avatarBox = document.getElementById('userAvatar');
-
-            if (uNameEl) uNameEl.innerText = savedName;
-            if (uMailEl) uMailEl.innerText = savedEmail;
-            if (menuSubEl) menuSubEl.innerText = savedName + ' (Click to edit)';
-            
-            if (avatarBox) {
-                if(savedPic) {
-                    avatarBox.style.backgroundImage = 'url(' + savedPic + ')';
-                    avatarBox.innerText = '';
-                } else {
-                    avatarBox.style.backgroundImage = 'none';
-                    avatarBox.innerText = savedName.charAt(0).toUpperCase();
-                }
-            }
-        }
-
-        window.onload = function() {
-            loadProfileInfo();
-        };
-
-        function openApp(name, icon, size, bg, desc, url) {
-            currentUrl = url;
-            document.getElementById('appBoxName').innerText = name;
-            document.getElementById('appBoxIcon').innerText = icon;
-            document.getElementById('appBoxIcon').className = 'details-icon ' + bg;
-            document.getElementById('appBoxSize').innerText = 'FastApp: ' + size;
-            document.getElementById('appBoxDesc').innerText = desc;
-            document.getElementById('detailsPage').style.display = 'block';
-        }
-
-        function closeApp() {
-            document.getElementById('detailsPage').style.display = 'none';
-        }
-
-        function startDownload() {
-            if (currentUrl) {
-                window.location.href = currentUrl;
-            } else {
-                alert('Download link error');
-            }
-        }
-
-        f
+            var uNameEl = document.getEl
