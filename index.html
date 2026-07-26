@@ -19,6 +19,7 @@
       color: #f8fafc;
       overflow-x: hidden;
       position: relative;
+      padding-bottom: 90px; /* Space for bottom nav bar */
     }
 
     /* Ambient Background Glow Effects */
@@ -57,6 +58,7 @@
     .search-wrapper {
       position: relative;
       width: 100%;
+      margin-bottom: 2rem;
     }
 
     /* Premium Search Bar Styling */
@@ -120,7 +122,7 @@
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 20px;
       overflow: hidden;
-      display: none; /* Initially Hidden */
+      display: none;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
 
@@ -173,6 +175,86 @@
       color: #94a3b8;
       font-size: 0.9rem;
     }
+
+    /* Home Feed Content Container */
+    .home-content {
+      margin-top: 1.5rem;
+    }
+
+    .home-content h3 {
+      font-size: 1.2rem;
+      color: #cbd5e1;
+      margin-bottom: 0.5rem;
+    }
+
+    .home-content p {
+      color: #64748b;
+      font-size: 0.9rem;
+    }
+
+    /* Bottom Navigation Bar */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 70px;
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+      z-index: 100;
+    }
+
+    .nav-btn {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #64748b;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 8px 12px;
+      border-radius: 12px;
+    }
+
+    .nav-btn svg {
+      width: 22px;
+      height: 22px;
+      stroke: #64748b;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: all 0.25s ease;
+    }
+
+    /* Active State for Navigation Buttons */
+    .nav-btn.active {
+      color: #38bdf8;
+    }
+
+    .nav-btn.active svg {
+      stroke: #38bdf8;
+      transform: translateY(-2px);
+    }
+
+    .nav-btn:hover {
+      color: #f8fafc;
+    }
+
+    .nav-btn:hover svg {
+      stroke: #f8fafc;
+    }
   </style>
 </head>
 <body>
@@ -181,10 +263,11 @@
   <div class="bg-glow-1"></div>
   <div class="bg-glow-2"></div>
 
-  <!-- Store Interface -->
+  <!-- Main Store View -->
   <div class="app-store-container">
+    
+    <!-- Search Section -->
     <div class="search-wrapper">
-      <!-- Premium Search Bar -->
       <div class="search-box">
         <svg class="search-icon" viewBox="0 0 24 24">
           <circle cx="11" cy="11" r="8"></circle>
@@ -193,13 +276,40 @@
         <input type="text" id="searchInput" class="search-input" placeholder="Search for apps & games..." />
       </div>
 
-      <!-- Auto Suggestions Dropdown -->
       <div id="searchResults" class="search-results"></div>
     </div>
+
+    <!-- Home Page Content Placeholder -->
+    <div id="homeView" class="home-content">
+      <h3>Welcome to App Store</h3>
+      <p>Use the search bar above or tap icons below to navigate.</p>
+    </div>
+
   </div>
 
+  <!-- Bottom Navigation Bar with Functional Buttons -->
+  <nav class="bottom-nav">
+    <!-- Left Bottom Corner: Home Button -->
+    <button class="nav-btn active" id="homeBtn" onclick="goToHome()">
+      <svg viewBox="0 0 24 24">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+      </svg>
+      <span>Home</span>
+    </button>
+
+    <!-- Right Bottom Corner: Search/Explore Button -->
+    <button class="nav-btn" id="searchBtn" onclick="focusSearch()">
+      <svg viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <span>Search</span>
+    </button>
+  </nav>
+
   <script>
-    // 1. AAPKA DATA FILE / DATABASE (FUTURE MEIN ISME APPS ADD KARTE RAHO)
+    // 1. DATA FILE / DATABASE
     const appsData = [
       { id: 1, name: "MS Player Pro", category: "Video & Media", iconText: "MS" },
       { id: 2, name: "Live TV Stream", category: "Entertainment", iconText: "TV" },
@@ -210,25 +320,24 @@
 
     const searchInput = document.getElementById('searchInput');
     const searchResults = document.getElementById('searchResults');
+    const homeBtn = document.getElementById('homeBtn');
+    const searchBtn = document.getElementById('searchBtn');
 
-    // 2. LIVE AUTO-SEARCH FUNCTION
+    // 2. SEARCH SYSTEM
     searchInput.addEventListener('input', function() {
       const query = this.value.toLowerCase().trim();
       
-      // Agar search box khali hai toh results band kar do
       if (query === '') {
         searchResults.style.display = 'none';
         searchResults.innerHTML = '';
         return;
       }
 
-      // Live Filtering (Aadha name type karne par bhi match karega)
       const filteredApps = appsData.filter(app => 
         app.name.toLowerCase().includes(query) || 
         app.category.toLowerCase().includes(query)
       );
 
-      // Results Render Karna
       renderResults(filteredApps);
     });
 
@@ -248,7 +357,35 @@
       }
       searchResults.style.display = 'block';
     }
+
+    // 3. NAVIGATION FUNCTIONALITY (ACTIVE WORKING BUTTONS)
+
+    // Function: Home Button Click Handler
+    function goToHome() {
+      // Clear Search Input & Close Search Overlay
+      searchInput.value = '';
+      searchResults.style.display = 'none';
+      searchResults.innerHTML = '';
+      
+      // Update Button Active Highlights
+      homeBtn.classList.add('active');
+      searchBtn.classList.remove('active');
+
+      // Scroll smoothly to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Function: Right Corner Search Button Click Handler
+    function focusSearch() {
+      // Focus cursor inside search input
+      searchInput.focus();
+
+      // Update Button Active Highlights
+      searchBtn.classList.add('active');
+      homeBtn.classList.remove('active');
+    }
   </script>
 
 </body>
-</html>
+          </html>
+  
