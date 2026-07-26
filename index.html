@@ -53,6 +53,12 @@
       padding: 2rem 1.5rem;
     }
 
+    /* Search Box Wrapper */
+    .search-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
     /* Premium Search Bar Styling */
     .search-box {
       position: relative;
@@ -104,6 +110,69 @@
       color: #94a3b8;
       font-size: 0.95rem;
     }
+
+    /* Dynamic Search Results Box */
+    .search-results {
+      margin-top: 10px;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      overflow: hidden;
+      display: none; /* Initially Hidden */
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Search Result Item */
+    .result-item {
+      padding: 0.9rem 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      cursor: pointer;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      transition: background 0.2s ease;
+    }
+
+    .result-item:last-child {
+      border-bottom: none;
+    }
+
+    .result-item:hover {
+      background: rgba(56, 189, 248, 0.12);
+    }
+
+    .app-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #6366f1, #06b6d4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .app-details h4 {
+      font-size: 0.95rem;
+      color: #f8fafc;
+      margin-bottom: 2px;
+    }
+
+    .app-details p {
+      font-size: 0.8rem;
+      color: #94a3b8;
+    }
+
+    .no-results {
+      padding: 1rem;
+      text-align: center;
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
   </style>
 </head>
 <body>
@@ -114,15 +183,72 @@
 
   <!-- Store Interface -->
   <div class="app-store-container">
-    <!-- Premium Search Bar -->
-    <div class="search-box">
-      <svg class="search-icon" viewBox="0 0 24 24">
-        <circle cx="11" cy="11" r="8"></circle>
-        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-      </svg>
-      <input type="text" class="search-input" placeholder="Search for apps & games..." />
+    <div class="search-wrapper">
+      <!-- Premium Search Bar -->
+      <div class="search-box">
+        <svg class="search-icon" viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="searchInput" class="search-input" placeholder="Search for apps & games..." />
+      </div>
+
+      <!-- Auto Suggestions Dropdown -->
+      <div id="searchResults" class="search-results"></div>
     </div>
   </div>
+
+  <script>
+    // 1. AAPKA DATA FILE / DATABASE (FUTURE MEIN ISME APPS ADD KARTE RAHO)
+    const appsData = [
+      { id: 1, name: "MS Player Pro", category: "Video & Media", iconText: "MS" },
+      { id: 2, name: "Live TV Stream", category: "Entertainment", iconText: "TV" },
+      { id: 3, name: "Photo Editor 4K", category: "Photography", iconText: "PE" },
+      { id: 4, name: "Cinema Hub", category: "Movies & Shows", iconText: "CH" },
+      { id: 5, name: "Music Studio", category: "Audio", iconText: "MS" }
+    ];
+
+    const searchInput = document.getElementById('searchInput');
+    const searchResults = document.getElementById('searchResults');
+
+    // 2. LIVE AUTO-SEARCH FUNCTION
+    searchInput.addEventListener('input', function() {
+      const query = this.value.toLowerCase().trim();
+      
+      // Agar search box khali hai toh results band kar do
+      if (query === '') {
+        searchResults.style.display = 'none';
+        searchResults.innerHTML = '';
+        return;
+      }
+
+      // Live Filtering (Aadha name type karne par bhi match karega)
+      const filteredApps = appsData.filter(app => 
+        app.name.toLowerCase().includes(query) || 
+        app.category.toLowerCase().includes(query)
+      );
+
+      // Results Render Karna
+      renderResults(filteredApps);
+    });
+
+    function renderResults(results) {
+      if (results.length === 0) {
+        searchResults.innerHTML = `<div class="no-results">No apps found</div>`;
+      } else {
+        searchResults.innerHTML = results.map(app => `
+          <div class="result-item">
+            <div class="app-icon">${app.iconText}</div>
+            <div class="app-details">
+              <h4>${app.name}</h4>
+              <p>${app.category}</p>
+            </div>
+          </div>
+        `).join('');
+      }
+      searchResults.style.display = 'block';
+    }
+  </script>
 
 </body>
 </html>
