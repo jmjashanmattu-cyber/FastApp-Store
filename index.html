@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>App Store Preview</title>
+  <title>App Store UI</title>
   <style>
     /* Reset & Base Setup */
     * {
@@ -15,32 +15,32 @@
 
     body {
       min-height: 100vh;
-      background-color: #0b0f19; /* Deep Obsidian Blue */
+      background-color: #0b0f19; /* Deep Obsidian Blue Background */
       color: #f8fafc;
       overflow-x: hidden;
       position: relative;
     }
 
-    /* Glowing Background Gradients */
+    /* Ambient Background Glow Effects */
     .bg-glow-1 {
       position: absolute;
       top: -100px;
       left: -100px;
       width: 400px;
       height: 400px;
-      background: radial-gradient(circle, rgba(99, 102, 241, 0.35) 0%, rgba(0,0,0,0) 70%);
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, rgba(0,0,0,0) 70%);
       filter: blur(80px);
       z-index: 0;
     }
 
     .bg-glow-2 {
       position: absolute;
-      top: 40%;
+      top: 35%;
       right: -100px;
-      width: 450px;
-      height: 450px;
+      width: 500px;
+      height: 500px;
       background: radial-gradient(circle, rgba(6, 182, 212, 0.25) 0%, rgba(0,0,0,0) 70%);
-      filter: blur(80px);
+      filter: blur(90px);
       z-index: 0;
     }
 
@@ -48,91 +48,61 @@
     .app-store-container {
       position: relative;
       z-index: 1;
-      max-width: 1200px;
+      max-width: 800px;
       margin: 0 auto;
-      padding: 2rem;
+      padding: 2rem 1.5rem;
     }
 
-    /* Section Title */
-    h2 {
-      font-size: 1.8rem;
-      margin-bottom: 1.5rem;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-    }
-
-    /* App Card Grid */
-    .app-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-
-    /* Frosted Glass Card */
-    .app-card {
-      background: rgba(30, 41, 59, 0.5); /* Semi-transparent Slate */
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 20px;
-      padding: 1.25rem;
+    /* Premium Search Bar Styling */
+    .search-box {
+      position: relative;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05); /* Frosted glass effect */
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 30px;
+      padding: 0.85rem 1.25rem 0.85rem 3.2rem;
       display: flex;
       align-items: center;
-      gap: 1rem;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
       transition: all 0.3s ease;
-      cursor: pointer;
     }
 
-    .app-card:hover {
-      transform: translateY(-5px);
-      background: rgba(30, 41, 59, 0.7);
-      border-color: rgba(99, 102, 241, 0.4);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(99, 102, 241, 0.2);
+    .search-box:focus-within {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(56, 189, 248, 0.5); /* Cyan Glow on Focus */
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5), 0 0 15px rgba(56, 189, 248, 0.2);
     }
 
-    /* Demo Icon */
-    .app-icon {
-      width: 60px;
-      height: 60px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, #6366f1, #06b6d4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      font-size: 1.2rem;
-      flex-shrink: 0;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    /* Search Icon */
+    .search-icon {
+      position: absolute;
+      left: 1.2rem;
+      width: 20px;
+      height: 20px;
+      stroke: #94a3b8;
+      fill: none;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      pointer-events: none;
     }
 
-    /* App Info */
-    .app-info h3 {
-      font-size: 1.1rem;
-      margin-bottom: 0.2rem;
+    /* Input Field */
+    .search-input {
+      width: 100%;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #f8fafc;
+      font-size: 1rem;
+      font-weight: 400;
     }
 
-    .app-info p {
-      font-size: 0.85rem;
+    .search-input::placeholder {
       color: #94a3b8;
-    }
-
-    /* Get Button */
-    .get-btn {
-      margin-left: auto;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: #38bdf8;
-      padding: 0.4rem 1rem;
-      border-radius: 20px;
-      font-weight: 600;
-      font-size: 0.85rem;
-      cursor: pointer;
-      transition: 0.2s ease;
-    }
-
-    .get-btn:hover {
-      background: #38bdf8;
-      color: #0f172a;
+      font-size: 0.95rem;
     }
   </style>
 </head>
@@ -144,38 +114,13 @@
 
   <!-- Store Interface -->
   <div class="app-store-container">
-    <h2>Featured Apps</h2>
-    
-    <div class="app-grid">
-      <!-- Card 1 -->
-      <div class="app-card">
-        <div class="app-icon">MS</div>
-        <div class="app-info">
-          <h3>Media Player</h3>
-          <p>Entertainment</p>
-        </div>
-        <button class="get-btn">GET</button>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="app-card">
-        <div class="app-icon" style="background: linear-gradient(135deg, #f43f5e, #fb923c);">TV</div>
-        <div class="app-info">
-          <h3>Live Stream</h3>
-          <p>Video & Shows</p>
-        </div>
-        <button class="get-btn">GET</button>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="app-card">
-        <div class="app-icon" style="background: linear-gradient(135deg, #10b981, #3b82f6);">PRO</div>
-        <div class="app-info">
-          <h3>Editor Studio</h3>
-          <p>Tools & Utility</p>
-        </div>
-        <button class="get-btn">GET</button>
-      </div>
+    <!-- Premium Search Bar -->
+    <div class="search-box">
+      <svg class="search-icon" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input type="text" class="search-input" placeholder="Search for apps & games..." />
     </div>
   </div>
 
